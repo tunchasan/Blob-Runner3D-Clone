@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: InteractiveMetaballs
+  m_Name: JellyMaterial
   m_Shader: {fileID: 4800000, guid: d36b7ffba7b1e4d39b4e60e89ae1f03d, type: 3}
   m_ShaderKeywords: _ZWRITE_ON
   m_LightmapFlags: 4
@@ -25,8 +25,9 @@ Material:
     - _Glossiness: 1
     - _Loop: 50
     - _Metallic: 0
-    - _MinDistance: 0.01
-    - _Scale: 0.52
+    - _MinDistance: 0.0243
+    - _NormalDelta: 0.0001
+    - _Scale: 0.25
     - _ScaleSphere: 0.5
     - _ShadowExtraBias: 0
     - _ShadowLoop: 50
@@ -34,6 +35,8 @@ Material:
     - _Smooth: 2
     - _ZWrite: 1
     m_Colors:
+    - _CapsuleColor: {r: 1, g: 0, b: 0, a: 1}
+    - _CapsuleColor1: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Cube1Color: {r: 0, g: 1, b: 0.7089348, a: 1}
     - _Cube2Color: {r: 1, g: 0.02157793, b: 0, a: 1}
