@@ -58,3 +58,16 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/.idea.Blob-Runner3D-Clone.iml
+/projectSettingsUpdater.xml
+/contentModel.xml
+/modules.xml
+# Datasource local storage ignored files
+/../../../../../../:\PersonalWorks\Blob-Runner3D-Clone\.idea\.idea.Blob-Runner3D-Clone\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
