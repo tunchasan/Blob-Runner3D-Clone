@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Examples/Interactive Metaballs/InteractiveMetaballs2.unity
+    guid: f7dc9fe7c29dd4725a58cd3090c7e0c5
   m_configObjects: {}
