@@ -62,42 +62,48 @@ MonoBehaviour:
       1.0, 1.0)\n_SphereColor(\"Sphere Color\", Color) = (1.0, 1.0, 1.0, 1.0)\n_TorusColor(\"Torus
       Color\", Color) = (1.0, 1.0, 1.0, 1.0)\n_PlaneColor(\"Plane Color\", Color)
       = (1.0, 1.0, 1.0, 1.0)\n_Cube1Color(\"Cube1 Color\", Color) = (1.0, 1.0, 1.0,
-      1.0)\n_Cube2Color(\"Cube2 Color\", Color) = (1.0, 1.0, 1.0, 1.0)"
+      1.0)\n_Cube2Color(\"Cube2 Color\", Color) = (1.0, 1.0, 1.0, 1.0)\n_CapsuleColor(\"Capsule
+      Color\", Color) = (1.0, 1.0, 1.0, 1.0)"
     folded: 0
   - key: DistanceFunction
     value: "// These inverse transform matrices are provided\n// from TransformProvider
       script \nfloat4x4 _Cube;\nfloat4x4 _Sphere;\nfloat4x4 _Sphere1;\nfloat4x4 _Torus;\nfloat4x4
-      _Plane; \nfloat4x4 _Cube1; \nfloat4x4 _Cube2; \n\nfloat _Smooth;\nfloat _Scale;\n\ninline
-      float DistanceFunction(float3 wpos)\n{\n    float4 cPos = mul(_Cube, float4(wpos,
-      1.0));\n    float4 sPos = mul(_Sphere, float4(wpos, 1.0));\n    float4 s1Pos
-      = mul(_Sphere1, float4(wpos, 1.0));\n    float4 tPos = mul(_Torus, float4(wpos,
-      1.0));\n    float4 pPos = mul(_Plane, float4(wpos, 1.0));\n    float4 c1Pos
-      = mul(_Cube1, float4(wpos, 1.0));\n    float4 c2Pos = mul(_Cube2, float4(wpos,
-      1.0));\n    \n    float s = Sphere(sPos, _Scale);\n    float s1 = Sphere(s1Pos,
-      _Scale);\n    float c = Box(cPos, 0.5);\n    float c1 = Box(c1Pos, 0.5);\n   
-      float c2 = Box(c2Pos, 0.5);\n    float t = Torus(tPos, float2(0.5, 0.2));\n   
-      float p = Plane(pPos, float3(0, 1, 0));\n\n    float sc = SmoothMin(s, c, _Smooth);\n   
-      float tp = SmoothMin(t, p, _Smooth);\n\n    float x = SmoothMin(sc, tp, _Smooth);\n   
-      float y = SmoothMin(c1, c2, _Smooth);\n\n    float z = SmoothMin(x, y, _Smooth);\n\n   
-      return SmoothMin(z, s1, _Smooth);\n}"
+      _Plane; \nfloat4x4 _Cube1; \nfloat4x4 _Cube2; \nfloat4x4 _Capsule; \n\nfloat
+      _Smooth;\nfloat _Scale;\n\ninline float DistanceFunction(float3 wpos)\n{\n   
+      float4 cPos = mul(_Cube, float4(wpos, 1.0));\n    float4 sPos = mul(_Sphere,
+      float4(wpos, 1.0));\n    float4 s1Pos = mul(_Sphere1, float4(wpos, 1.0));\n   
+      float4 tPos = mul(_Torus, float4(wpos, 1.0));\n    float4 pPos = mul(_Plane,
+      float4(wpos, 1.0));\n    float4 c1Pos = mul(_Cube1, float4(wpos, 1.0));\n   
+      float4 c2Pos = mul(_Cube2, float4(wpos, 1.0));\n    \n    float4 cpPos = mul(_Capsule,
+      float4(wpos, 1.0));\n    \n    float s = Sphere(sPos, _Scale);\n    float s1
+      = Sphere(s1Pos, _Scale);\n    float c = Box(cPos, 0.5);\n    float c1 = Box(c1Pos,
+      0.5);\n    float c2 = Box(c2Pos, 0.5);\n    float t = Torus(tPos, float2(0.5,
+      0.2));\n    float p = Plane(pPos, float3(0, 1, 0));\n\n    float cp = Capsule(cpPos,
+      float3(0, 0, 0), float3(0, 1, 0), .5);\n    \n    float sc = SmoothMin(s, c,
+      _Smooth);\n    float tp = SmoothMin(t, p, _Smooth);\n\n    float x = SmoothMin(sc,
+      tp, _Smooth);\n    float y = SmoothMin(c1, c2, _Smooth);\n\n    float z = SmoothMin(x,
+      y, _Smooth);\n\n    float ta = SmoothMin(z, s1, _Smooth);\n\n    return SmoothMin(ta,
+      cp, _Smooth);\n}"
     folded: 1
   - key: PostEffect
     value: "float4 _CubeColor;\nfloat4 _SphereColor;\nfloat4 _TorusColor;\nfloat4
-      _PlaneColor;\nfloat4 _Cube1Color;\nfloat4 _Cube2Color;\n\ninline void PostEffect(RaymarchInfo
-      ray, inout PostEffectOutput o)\n{\n    float3 wpos = ray.endPos;\n    float4
-      cPos = mul(_Cube, float4(wpos, 1.0));\n    float4 sPos = mul(_Sphere, float4(wpos,
-      1.0));\n    float4 tPos = mul(_Torus, float4(wpos, 1.0));\n    float4 pPos
-      = mul(_Plane, float4(wpos, 1.0));\n    \n    float4 c1Pos = mul(_Cube1, float4(wpos,
-      1.0));\n    float4 c2Pos = mul(_Cube2, float4(wpos, 1.0));\n    \n    float
-      s = Sphere(sPos, _Scale);\n    float c = Box(cPos, 0.5);\n    float t = Torus(tPos,
-      float2(0.5, 0.2));\n    float p = Plane(pPos, float3(0, 1, 0));\n\n    float
-      c1 = Box(c1Pos, 0.5);\n    float c2 = Box(c2Pos, 0.5);\n    \n    float4 a
+      _PlaneColor;\nfloat4 _Cube1Color;\nfloat4 _Cube2Color;\nfloat4 _CapsuleColor;\n\ninline
+      void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)\n{\n    float3
+      wpos = ray.endPos;\n    float4 cPos = mul(_Cube, float4(wpos, 1.0));\n    float4
+      sPos = mul(_Sphere, float4(wpos, 1.0));\n    float4 tPos = mul(_Torus, float4(wpos,
+      1.0));\n    float4 pPos = mul(_Plane, float4(wpos, 1.0));\n    \n    float4
+      c1Pos = mul(_Cube1, float4(wpos, 1.0));\n    float4 c2Pos = mul(_Cube2, float4(wpos,
+      1.0));\n\n    float4 cpPos = mul(_CapsuleColor, float4(wpos, 1.0));\n    \n   
+      float s = Sphere(sPos, _Scale);\n    float c = Box(cPos, 0.5);\n    float t
+      = Torus(tPos, float2(0.5, 0.2));\n    float p = Plane(pPos, float3(0, 1, 0));\n\n   
+      float c1 = Box(c1Pos, 0.5);\n    float c2 = Box(c2Pos, 0.5);\n\n    float cp
+      = Capsule(cpPos, float3(0, 0, 0), float3(0, 1, 0), .5);\n    \n    float4 a
       = float4(2.0 / s, 2.0 / c, 2.0 / t, 2.0 / p);\n\n    float4 b = float4(2.0
-      / c1, 2.0 / c2, 0, 0);\n\n    fixed3 computeAlbedo1 =\n        a.x * _SphereColor
+      / c1, 2.0 / c2, 2 / cp, 0);\n\n    fixed3 computeAlbedo1 =\n        a.x * _SphereColor
       +\n        a.y * _CubeColor +\n        a.z * _TorusColor +\n        a.w * _PlaneColor;\n\n   
-      fixed3 computeAlbedo2 =\n        b.x * _Cube1Color +\n        b.y * _Cube2Color;\n\n   
-      fixed3 result = normalize(fixed3(computeAlbedo1 + computeAlbedo2));\n    \n   
-      o.Albedo =\n     result;\n}"
+      fixed3 computeAlbedo2 =\n        b.x * _Cube1Color +\n        b.y * _Cube2Color
+      +\n        b.z * _CapsuleColor;\n\n    fixed3 result = normalize(fixed3(computeAlbedo1
+      + computeAlbedo2));\n    \n    o.Albedo =\n     result;\n}"
     folded: 1
   constants: {fileID: 11400000, guid: b54b57bcc672e49638fe9b2da609c4df, type: 2}
   basicFolded: 0

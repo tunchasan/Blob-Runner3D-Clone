@@ -32,6 +32,7 @@ _TorusColor("Torus Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _PlaneColor("Plane Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _Cube1Color("Cube1 Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _Cube2Color("Cube2 Color", Color) = (1.0, 1.0, 1.0, 1.0)
+_CapsuleColor("Capsule Color", Color) = (1.0, 1.0, 1.0, 1.0)
 // @endblock
 }
 
@@ -73,6 +74,7 @@ float4x4 _Torus;
 float4x4 _Plane; 
 float4x4 _Cube1; 
 float4x4 _Cube2; 
+float4x4 _Capsule; 
 
 float _Smooth;
 float _Scale;
@@ -87,6 +89,8 @@ inline float DistanceFunction(float3 wpos)
     float4 c1Pos = mul(_Cube1, float4(wpos, 1.0));
     float4 c2Pos = mul(_Cube2, float4(wpos, 1.0));
     
+    float4 cpPos = mul(_Capsule, float4(wpos, 1.0));
+    
     float s = Sphere(sPos, _Scale);
     float s1 = Sphere(s1Pos, _Scale);
     float c = Box(cPos, 0.5);
@@ -95,6 +99,8 @@ inline float DistanceFunction(float3 wpos)
     float t = Torus(tPos, float2(0.5, 0.2));
     float p = Plane(pPos, float3(0, 1, 0));
 
+    float cp = Capsule(cpPos, float3(0, 0, 0), float3(0, 1, 0), .5);
+    
     float sc = SmoothMin(s, c, _Smooth);
     float tp = SmoothMin(t, p, _Smooth);
 
@@ -103,7 +109,9 @@ inline float DistanceFunction(float3 wpos)
 
     float z = SmoothMin(x, y, _Smooth);
 
-    return SmoothMin(z, s1, _Smooth);
+    float ta = SmoothMin(z, s1, _Smooth);
+
+    return SmoothMin(ta, cp, _Smooth);
 }
 // @endblock
 
@@ -125,7 +133,7 @@ inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
     
     float4 c1Pos = mul(_Cube1, float4(wpos, 1.0));
     float4 c2Pos = mul(_Cube2, float4(wpos, 1.0));
-    
+
     float s = Sphere(sPos, _Scale);
     float c = Box(cPos, 0.5);
     float t = Torus(tPos, float2(0.5, 0.2));
@@ -133,7 +141,7 @@ inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
 
     float c1 = Box(c1Pos, 0.5);
     float c2 = Box(c2Pos, 0.5);
-    
+
     float4 a = float4(2.0 / s, 2.0 / c, 2.0 / t, 2.0 / p);
 
     float4 b = float4(2.0 / c1, 2.0 / c2, 0, 0);
