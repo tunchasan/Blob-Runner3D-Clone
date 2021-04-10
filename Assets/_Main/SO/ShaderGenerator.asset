@@ -72,36 +72,51 @@ MonoBehaviour:
     folded: 0
   - key: DistanceFunction
     value: "// These inverse transform matrices are provided\n// from TransformProvider
-      script\nfloat4x4 _Head;\nfloat4x4 _TorsoUpper;\nfloat4x4 _TorsoLower;\nfloat4x4
-      _LeftArmUpper;\nfloat4x4 _LeftArmLower;\nfloat4x4 _RightArmUpper;\nfloat4x4
-      _RightArmLower;\nfloat4x4 _LeftLegUpper;\nfloat4x4 _LeftLegLower;\nfloat4x4
-      _RightLegUpper;\nfloat4x4 _RightLegLower;\n\nfloat _Smooth;\nfloat _Scale;\n\ninline
+      script\nfloat4x4 _Head;\nfloat4x4 _TorsoUpper;\nfloat4x4 _TorsoMid;\nfloat4x4
+      _TorsoLower;\nfloat4x4 _LeftArmUpper;\nfloat4x4 _LeftArmMid;\nfloat4x4 _LeftArmLower;\nfloat4x4
+      _RightArmUpper;\nfloat4x4 _RightArmMid;\nfloat4x4 _RightArmLower;\nfloat4x4
+      _LeftLegUpper;\nfloat4x4 _LeftLegLower;\nfloat4x4 _LeftLegMid;\nfloat4x4 _RightLegUpper;\nfloat4x4
+      _RightLegLower;\nfloat4x4 _RightLegMid;\n\nfloat _Smooth;\nfloat _Scale;\n\ninline
       float DistanceFunction(float3 wpos)\n{\n    float4 headPos = mul(_Head, float4(wpos,
       1.0));\n    float4 torsoUpperPos = mul(_TorsoUpper, float4(wpos, 1.0));\n   
-      float4 torsoLowerPos = mul(_TorsoLower, float4(wpos, 1.0));\n    float4 leftArmUpperPos
-      = mul(_LeftArmUpper, float4(wpos, 1.0));\n    float4 leftArmLowerPos = mul(_LeftArmLower,
-      float4(wpos, 1.0));\n    float4 rightArmUpperPos = mul(_RightArmUpper, float4(wpos,
-      1.0));\n    float4 rightArmLowerPos = mul(_RightArmLower, float4(wpos, 1.0));\n   
-      float4 leftLegUpperPos = mul(_LeftLegUpper, float4(wpos, 1.0));\n    float4
-      leftLegLowerPos = mul(_LeftLegLower, float4(wpos, 1.0));\n    float4 rightLegUpperPos
-      = mul(_RightLegUpper, float4(wpos, 1.0));\n    float4 rightLegLowerPos = mul(_RightLegLower,
-      float4(wpos, 1.0));\n\n    float head = Sphere(headPos, _Scale);\n    float
-      torsoUpper = Sphere(torsoUpperPos, _Scale);\n    float torsoLower = Sphere(torsoLowerPos,
-      _Scale);\n    float leftArmUpper = Sphere(leftArmUpperPos, _Scale);\n    float
-      leftArmLower = Sphere(leftArmLowerPos, _Scale);\n    float rightArmUpper =
-      Sphere(rightArmUpperPos, _Scale);\n    float rightArmLower = Sphere(rightArmLowerPos,
-      _Scale);\n    float leftLegUpper = Sphere(leftLegUpperPos, _Scale);\n    float
-      leftLegLower = Sphere(leftLegLowerPos, _Scale);\n    float rightLegUpper =
-      Sphere(rightLegUpperPos, _Scale);\n    float rightLegLower = Sphere(rightLegLowerPos,
-      _Scale);\n\n    float result1 = SmoothMin(torsoUpper, torsoLower, _Smooth);\n   
-      \n    float result2 = SmoothMin(leftArmUpper, leftArmLower, _Smooth);\n   
-      \n    float result3 = SmoothMin(rightArmUpper, rightArmLower, _Smooth);\n   
-      float result4 = SmoothMin(leftLegUpper, leftLegLower, _Smooth);\n    float
-      result5 = SmoothMin(rightLegUpper, rightLegLower, _Smooth);\n    \n    float
-      result6 = SmoothMin(head, result1, _Smooth * 5);\n    \n    float result7 =
-      SmoothMin(result2, result3, _Smooth);\n    float result8 = SmoothMin(result4,
-      result5, _Smooth);\n    \n    float result9 = SmoothMin(result6, result7, _Smooth);\n   
-      \n    return  SmoothMin(result8, result9, _Smooth);\n}"
+      float4 torsoMidPos = mul(_TorsoMid, float4(wpos, 1.0));\n    float4 torsoLowerPos
+      = mul(_TorsoLower, float4(wpos, 1.0));\n    float4 leftArmUpperPos = mul(_LeftArmUpper,
+      float4(wpos, 1.0));\n    float4 leftArmMidPos = mul(_LeftArmMid, float4(wpos,
+      1.0));\n    float4 leftArmLowerPos = mul(_LeftArmLower, float4(wpos, 1.0));\n   
+      float4 rightArmUpperPos = mul(_RightArmUpper, float4(wpos, 1.0));\n    float4
+      rightArmMidPos = mul(_RightArmMid, float4(wpos, 1.0));\n    float4 rightArmLowerPos
+      = mul(_RightArmLower, float4(wpos, 1.0));\n    float4 leftLegUpperPos = mul(_LeftLegUpper,
+      float4(wpos, 1.0));\n    float4 leftLegLowerPos = mul(_LeftLegLower, float4(wpos,
+      1.0));\n    float4 leftLegMidPos = mul(_LeftLegMid, float4(wpos, 1.0));\n   
+      float4 rightLegUpperPos = mul(_RightLegUpper, float4(wpos, 1.0));\n    float4
+      rightLegLowerPos = mul(_RightLegLower, float4(wpos, 1.0));\n    float4 rightLegMidPos
+      = mul(_RightLegMid, float4(wpos, 1.0));\n\n    float head = Sphere(headPos,
+      _Scale);\n    float torsoUpper = Capsule(torsoUpperPos, float3(0, 0, 0), float3(0,
+      .15, 0), .125);\n    float torsoMid = Sphere(torsoMidPos, .125);\n    float
+      torsoLower = Sphere(torsoLowerPos, .15);\n    \n    float leftArmUpper = Capsule(leftArmUpperPos,
+      float3(0, 0, 0), float3(0, .15, 0), .05);\n    float leftArmMid =  Sphere(leftArmMidPos,
+      .025);\n    float leftArmLower = Capsule(leftArmLowerPos, float3(0, 0, 0),
+      float3(0, .15, 0), .035);\n    \n    float rightArmUpper = Capsule(rightArmUpperPos,
+      float3(0, 0, 0), float3(0, .15, 0), .05);\n    float rightArmMid =  Sphere(rightArmMidPos,
+      .025);\n    float rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0),
+      float3(0, .15, 0), .035);\n    \n    float leftLegUpper = Capsule(leftLegUpperPos,
+      float3(0, 0, 0), float3(0, .125, 0), .045);\n    float leftLegLower = Capsule(leftLegLowerPos,
+      float3(0, 0, 0), float3(0, .125, 0), .045);\n    float leftLegMid =  Sphere(leftLegMidPos,
+      .05);\n    \n    float rightLegUpper = Capsule(rightLegUpperPos, float3(0,
+      0, 0), float3(0, .125, 0), .045);\n    float rightLegLower = Capsule(rightLegLowerPos,
+      float3(0, 0, 0), float3(0, .125, 0), .045);\n    float rightLegMid =  Sphere(rightLegMidPos,
+      .05);\n\n    float result1 = SmoothMin(torsoUpper, torsoLower, _Smooth);\n   
+      float result2 = SmoothMin(leftArmUpper, leftArmLower, _Smooth);\n    float
+      result3 = SmoothMin(rightArmUpper, rightArmLower, _Smooth);\n    float result4
+      = SmoothMin(leftLegUpper, leftLegLower, _Smooth);\n    float result5 = SmoothMin(rightLegUpper,
+      rightLegLower, _Smooth);\n    float result6 = SmoothMin(head, torsoMid, _Smooth);\n   
+      float result7 = SmoothMin(leftArmMid, rightArmMid, _Smooth);\n    float result8
+      = SmoothMin(leftLegMid, rightLegMid, _Smooth);\n    \n    float result9 = SmoothMin(result1,
+      result2, _Smooth);\n    float result10 = SmoothMin(result3, result4, _Smooth);\n   
+      float result11 = SmoothMin(result5, result6, _Smooth);\n    float result12
+      = SmoothMin(result7, result8, _Smooth);\n    \n    float result13 = SmoothMin(result9,
+      result10, _Smooth);\n    float result14 = SmoothMin(result11, result12, _Smooth);\n   
+      \n    return SmoothMin(result13, result14, _Smooth);\n}"
     folded: 0
   - key: PostEffect
     value: "// float4 _CubeColor;\n// float4 _SphereColor;\n// float4 _TorusColor;\n//
