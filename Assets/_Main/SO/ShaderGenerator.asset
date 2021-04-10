@@ -94,14 +94,14 @@ MonoBehaviour:
       leftLegLower = Sphere(leftLegLowerPos, _Scale);\n    float rightLegUpper =
       Sphere(rightLegUpperPos, _Scale);\n    float rightLegLower = Sphere(rightLegLowerPos,
       _Scale);\n\n    float result1 = SmoothMin(torsoUpper, torsoLower, _Smooth);\n   
-      float result2 = SmoothMin(leftArmUpper, leftArmLower, _Smooth);\n    float
-      result3 = SmoothMin(rightArmUpper, rightArmLower, _Smooth);\n    float result4
-      = SmoothMin(leftLegUpper, leftLegLower, _Smooth);\n    float result5 = SmoothMin(rightLegUpper,
-      rightLegLower, _Smooth);\n    \n    float result6 = SmoothMin(head, result1,
-      _Smooth);\n    float result7 = SmoothMin(result2, result3, _Smooth);\n    float
-      result8 = SmoothMin(result4, result5, _Smooth);\n    \n    float result9 =
-      SmoothMin(result6, result7, _Smooth);\n    \n    return  SmoothMin(result8,
-      result9, _Smooth);\n}"
+      \n    float result2 = SmoothMin(leftArmUpper, leftArmLower, _Smooth);\n   
+      \n    float result3 = SmoothMin(rightArmUpper, rightArmLower, _Smooth);\n   
+      float result4 = SmoothMin(leftLegUpper, leftLegLower, _Smooth);\n    float
+      result5 = SmoothMin(rightLegUpper, rightLegLower, _Smooth);\n    \n    float
+      result6 = SmoothMin(head, result1, _Smooth * 5);\n    \n    float result7 =
+      SmoothMin(result2, result3, _Smooth);\n    float result8 = SmoothMin(result4,
+      result5, _Smooth);\n    \n    float result9 = SmoothMin(result6, result7, _Smooth);\n   
+      \n    return  SmoothMin(result8, result9, _Smooth);\n}"
     folded: 0
   - key: PostEffect
     value: "// float4 _CubeColor;\n// float4 _SphereColor;\n// float4 _TorusColor;\n//

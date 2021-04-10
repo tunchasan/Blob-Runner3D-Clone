@@ -6,6 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Examples/Interactive Metaballs/InteractiveMetaballs2.unity
-    guid: f7dc9fe7c29dd4725a58cd3090c7e0c5
+    path: Assets/_Main/Scenes/Scene_001.unity
+    guid: fbc327563c6a9ec4fba185274028289c
   m_configObjects: {}

@@ -27,17 +27,17 @@ Material:
     - _Metallic: 0
     - _MinDistance: 0.0243
     - _NormalDelta: 0.0001
-    - _Scale: 0.25
+    - _Scale: 0.52
     - _ScaleSphere: 0.5
     - _ShadowExtraBias: 0
     - _ShadowLoop: 50
     - _ShadowMinDistance: 0.0342
-    - _Smooth: 2
+    - _Smooth: 6.2
     - _ZWrite: 1
     m_Colors:
     - _CapsuleColor: {r: 1, g: 0, b: 0, a: 1}
     - _CapsuleColor1: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 1, g: 0.8499565, b: 0, a: 1}
     - _Cube1Color: {r: 0, g: 1, b: 0.7089348, a: 1}
     - _Cube2Color: {r: 1, g: 0.02157793, b: 0, a: 1}
     - _CubeColor: {r: 0.07450986, g: 1, b: 0, a: 1}

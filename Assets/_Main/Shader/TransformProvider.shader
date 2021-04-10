@@ -114,18 +114,21 @@ inline float DistanceFunction(float3 wpos)
     float rightLegLower = Sphere(rightLegLowerPos, _Scale);
 
     float result1 = SmoothMin(torsoUpper, torsoLower, _Smooth);
+    
     float result2 = SmoothMin(leftArmUpper, leftArmLower, _Smooth);
+    
     float result3 = SmoothMin(rightArmUpper, rightArmLower, _Smooth);
     float result4 = SmoothMin(leftLegUpper, leftLegLower, _Smooth);
     float result5 = SmoothMin(rightLegUpper, rightLegLower, _Smooth);
     
     float result6 = SmoothMin(head, result1, _Smooth);
+    
     float result7 = SmoothMin(result2, result3, _Smooth);
     float result8 = SmoothMin(result4, result5, _Smooth);
     
     float result9 = SmoothMin(result6, result7, _Smooth);
     
-    return  SmoothMin(result8, result9, _Smooth);
+    return SmoothMin(result8, result9, _Smooth);
 }
 // @endblock
 
