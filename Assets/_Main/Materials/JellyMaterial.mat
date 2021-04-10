@@ -27,7 +27,7 @@ Material:
     - _Metallic: 0
     - _MinDistance: 0.0243
     - _NormalDelta: 0.0001
-    - _Scale: 0.075
+    - _Scale: 0.1
     - _ScaleSphere: 0.5
     - _ShadowExtraBias: 0
     - _ShadowLoop: 50
@@ -41,9 +41,9 @@ Material:
     - _Cube1Color: {r: 0, g: 1, b: 0.7089348, a: 1}
     - _Cube2Color: {r: 1, g: 0.02157793, b: 0, a: 1}
     - _CubeColor: {r: 0.07450986, g: 1, b: 0, a: 1}
-    - _HeadColor: {r: 1, g: 0.0208347, b: 0, a: 1}
+    - _HeadColor: {r: 1, g: 0, b: 0.0689106, a: 1}
     - _LeftArmLowerColor: {r: 1, g: 0.8937396, b: 0, a: 1}
-    - _LeftArmMidColor: {r: 1, g: 0, b: 0.88550186, a: 1}
+    - _LeftArmMidColor: {r: 1, g: 0, b: 0.4361801, a: 1}
     - _LeftArmUpperColor: {r: 0.7082921, g: 1, b: 0, a: 1}
     - _LeftLegLowerColor: {r: 1, g: 0, b: 0.045223236, a: 1}
     - _LeftLegMidColor: {r: 0.091415524, g: 1, b: 0, a: 1}
@@ -61,7 +61,7 @@ Material:
     - _TorsoDownColor: {r: 1, g: 1, b: 1, a: 1}
     - _TorsoLowerColor: {r: 1, g: 0, b: 0.34520102, a: 1}
     - _TorsoLowerExtraColor: {r: 0, g: 0.39009237, b: 1, a: 1}
-    - _TorsoMidColor: {r: 0.5680938, g: 0, b: 1, a: 1}
+    - _TorsoMidColor: {r: 0.9528302, g: 0.5327659, b: 0, a: 1}
     - _TorsoUpColor: {r: 1, g: 1, b: 1, a: 1}
     - _TorsoUpperColor: {r: 0.8373046, g: 1, b: 0, a: 1}
     - _TorusColor: {r: 1, g: 0.1254902, b: 0, a: 1}

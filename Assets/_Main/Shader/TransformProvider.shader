@@ -126,21 +126,21 @@ inline float DistanceFunction(float3 wpos)
     float torsoLower = Sphere(torsoLowerPos, .16);
     float torsoLowerExtra =  Sphere(torsoLowerExtraPos, .16);
     
-    float leftArmUpper = Capsule(leftArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .05);
-    float leftArmMid =  Sphere(leftArmMidPos, .025);
-    float leftArmLower = Capsule(leftArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), .035);
+    float leftArmUpper = Capsule(leftArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .075);
+    float leftArmMid =  Sphere(leftArmMidPos, .04);
+    float leftArmLower = Capsule(leftArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), .05);
     
-    float rightArmUpper = Capsule(rightArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .05);
-    float rightArmMid =  Sphere(rightArmMidPos, .025);
-    float rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), .035);
+    float rightArmUpper = Capsule(rightArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .075);
+    float rightArmMid =  Sphere(rightArmMidPos, .045);
+    float rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), .05);
     
-    float leftLegUpper = Capsule(leftLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), .05);
-    float leftLegLower = Capsule(leftLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), .05);
-    float leftLegMid =  Sphere(leftLegMidPos, .055);
+    float leftLegUpper = Capsule(leftLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), .065);
+    float leftLegLower = Capsule(leftLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), .065);
+    float leftLegMid =  Sphere(leftLegMidPos, .07);
     
-    float rightLegUpper = Capsule(rightLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), .05);
-    float rightLegLower = Capsule(rightLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), .05);
-    float rightLegMid =  Sphere(rightLegMidPos, .055);
+    float rightLegUpper = Capsule(rightLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), .065);
+    float rightLegLower = Capsule(rightLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), .065);
+    float rightLegMid =  Sphere(rightLegMidPos, .07);
 
     float result1 = SmoothMin(torsoUpper, torsoLower, _Smooth);
     float result2 = SmoothMin(leftArmUpper, leftArmLower, _Smooth);
@@ -211,27 +211,27 @@ inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
     float torsoLower = Sphere(torsoLowerPos, .16);
     float torsoLowerExtra =  Sphere(torsoLowerExtraPos, .16);
     
-    float leftArmUpper = Capsule(leftArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .05);
-    float leftArmMid =  Sphere(leftArmMidPos, .025);
-    float leftArmLower = Capsule(leftArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), .035);
+    float leftArmUpper = Capsule(leftArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .075);
+    float leftArmMid =  Sphere(leftArmMidPos, .04);
+    float leftArmLower = Capsule(leftArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), .05);
     
-    float rightArmUpper = Capsule(rightArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .05);
-    float rightArmMid =  Sphere(rightArmMidPos, .025);
-    float rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), .035);
+    float rightArmUpper = Capsule(rightArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .075);
+    float rightArmMid =  Sphere(rightArmMidPos, .045);
+    float rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0), float3(0, .15, 0), .05);
     
-    float leftLegUpper = Capsule(leftLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), .05);
-    float leftLegLower = Capsule(leftLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), .05);
-    float leftLegMid =  Sphere(leftLegMidPos, .055);
+    float leftLegUpper = Capsule(leftLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), .065);
+    float leftLegLower = Capsule(leftLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), .065);
+    float leftLegMid =  Sphere(leftLegMidPos, .07);
     
-    float rightLegUpper = Capsule(rightLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), .05);
-    float rightLegLower = Capsule(rightLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), .05);
-    float rightLegMid =  Sphere(rightLegMidPos, .055);
+    float rightLegUpper = Capsule(rightLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), .065);
+    float rightLegLower = Capsule(rightLegLowerPos, float3(0, 0, 0), float3(0, .125, 0), .065);
+    float rightLegMid =  Sphere(rightLegMidPos, .07);
 
-    float4 result1 = float4(5.0 / head, 5.0 / torsoUpper, 5.0 / torsoMid, 5.0 / torsoLower);
-    float4 result2 = float4(5.0 / torsoLowerExtra, 5.0 / leftArmUpper, 5.0 / leftArmMid, 5.0 / leftArmLower);
-    float4 result3 = float4(5.0 / rightArmUpper, 5.0 / rightArmMid, 5.0 / rightArmLower, 5.0 / leftLegUpper);
-    float4 result4 = float4(5.0 / leftLegLower, 5.0 / leftLegMid, 5.0 / rightLegUpper, 5.0 / rightLegLower);
-    float4 result5 = float4(5.0 / rightLegMid, 0, 0, 0);
+    float4 result1 = float4(4.0 / head, 4.0 / torsoUpper, 4.0 / torsoMid, 4.0 / torsoLower);
+    float4 result2 = float4(4.0 / torsoLowerExtra, 4.0 / leftArmUpper, 4.0 / leftArmMid, 4.0 / leftArmLower);
+    float4 result3 = float4(4.0 / rightArmUpper, 4.0 / rightArmMid, 4.0 / rightArmLower, 4.0 / leftLegUpper);
+    float4 result4 = float4(4.0 / leftLegLower, 4.0 / leftLegMid, 4.0 / rightLegUpper, 4.0 / rightLegLower);
+    float4 result5 = float4(4.0 / rightLegMid, 0, 0, 0);
 
     fixed3 computeAlbedoPart1 =
         result1.x * _HeadColor +

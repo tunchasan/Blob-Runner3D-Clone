@@ -51,7 +51,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: mixamo_com
+  m_Name: Running
   m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions: []
@@ -64,7 +64,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 4510891270c419240bab5e16d87ff47a,
+  m_Motion: {fileID: -203655887218126122, guid: c837f78f9b0fd1048a3f67904cee47cd,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
