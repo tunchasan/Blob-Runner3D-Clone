@@ -41,28 +41,28 @@ Material:
     - _Cube1Color: {r: 0, g: 1, b: 0.7089348, a: 1}
     - _Cube2Color: {r: 1, g: 0.02157793, b: 0, a: 1}
     - _CubeColor: {r: 0.07450986, g: 1, b: 0, a: 1}
-    - _HeadColor: {r: 1, g: 0, b: 0, a: 1}
-    - _LeftArmLowerColor: {r: 0, g: 0.19785309, b: 1, a: 1}
-    - _LeftArmMidColor: {r: 1, g: 0, b: 0, a: 1}
-    - _LeftArmUpperColor: {r: 0.49517703, g: 1, b: 0, a: 1}
-    - _LeftLegLowerColor: {r: 1, g: 0, b: 0, a: 1}
-    - _LeftLegMidColor: {r: 1, g: 0, b: 0.79645824, a: 1}
-    - _LeftLegUpperColor: {r: 1, g: 0, b: 0, a: 1}
+    - _HeadColor: {r: 1, g: 0.0208347, b: 0, a: 1}
+    - _LeftArmLowerColor: {r: 1, g: 0.8937396, b: 0, a: 1}
+    - _LeftArmMidColor: {r: 1, g: 0, b: 0.88550186, a: 1}
+    - _LeftArmUpperColor: {r: 0.7082921, g: 1, b: 0, a: 1}
+    - _LeftLegLowerColor: {r: 1, g: 0, b: 0.045223236, a: 1}
+    - _LeftLegMidColor: {r: 0.091415524, g: 1, b: 0, a: 1}
+    - _LeftLegUpperColor: {r: 1, g: 0.65512747, b: 0, a: 1}
     - _PlaneColor: {r: 0, g: 0.08852029, b: 1, a: 1}
-    - _RightArmLowerColor: {r: 0, g: 0.17825913, b: 1, a: 1}
-    - _RightArmMidColor: {r: 1, g: 0, b: 0, a: 1}
-    - _RightArmUpperColor: {r: 0, g: 0.94911766, b: 1, a: 1}
-    - _RightLegLowerColor: {r: 1, g: 0, b: 0, a: 1}
-    - _RightLegMidColor: {r: 1, g: 0.81284153, b: 0, a: 1}
-    - _RightLegUpperColor: {r: 0.36262476, g: 1, b: 0, a: 1}
+    - _RightArmLowerColor: {r: 1, g: 0, b: 0.9577489, a: 1}
+    - _RightArmMidColor: {r: 0, g: 0.16006184, b: 1, a: 1}
+    - _RightArmUpperColor: {r: 0, g: 0.13257074, b: 1, a: 1}
+    - _RightLegLowerColor: {r: 0, g: 0.47820997, b: 1, a: 1}
+    - _RightLegMidColor: {r: 0.104660034, g: 1, b: 0, a: 1}
+    - _RightLegUpperColor: {r: 1, g: 0, b: 0.6304126, a: 1}
     - _Sphere1Color: {r: 1, g: 1, b: 1, a: 1}
     - _SphereColor: {r: 1, g: 0.6217325, b: 0, a: 1}
     - _TorseUpperColor: {r: 1, g: 1, b: 1, a: 1}
     - _TorsoDownColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TorsoLowerColor: {r: 1, g: 0.80241585, b: 0, a: 1}
-    - _TorsoLowerExtraColor: {r: 1, g: 0, b: 0, a: 1}
-    - _TorsoMidColor: {r: 1, g: 0.83183765, b: 0, a: 1}
+    - _TorsoLowerColor: {r: 1, g: 0, b: 0.34520102, a: 1}
+    - _TorsoLowerExtraColor: {r: 0, g: 0.39009237, b: 1, a: 1}
+    - _TorsoMidColor: {r: 0.5680938, g: 0, b: 1, a: 1}
     - _TorsoUpColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TorsoUpperColor: {r: 0.22821617, g: 0, b: 1, a: 1}
+    - _TorsoUpperColor: {r: 0.8373046, g: 1, b: 0, a: 1}
     - _TorusColor: {r: 1, g: 0.1254902, b: 0, a: 1}
   m_BuildTextureStacks: []
