@@ -107,12 +107,12 @@ MonoBehaviour:
       0, 0), float3(0, .15, 0), .075);\n    float rightArmMid =  Sphere(rightArmMidPos,
       .045);\n    float rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0),
       float3(0, .15, 0), .05);\n    \n    float leftLegUpper = Capsule(leftLegUpperPos,
-      float3(0, 0, 0), float3(0, .125, 0), .065);\n    float leftLegLower = Capsule(leftLegLowerPos,
-      float3(0, 0, 0), float3(0, .125, 0), .065);\n    float leftLegMid =  Sphere(leftLegMidPos,
-      .07);\n    \n    float rightLegUpper = Capsule(rightLegUpperPos, float3(0,
-      0, 0), float3(0, .125, 0), .065);\n    float rightLegLower = Capsule(rightLegLowerPos,
-      float3(0, 0, 0), float3(0, .125, 0), .065);\n    float rightLegMid =  Sphere(rightLegMidPos,
-      .07);\n\n    float result1 = SmoothMin(torsoUpper, torsoLower, _Smooth);\n   
+      float3(0, 0, 0), float3(0, .125, 0), .07);\n    float leftLegLower = Capsule(leftLegLowerPos,
+      float3(0, 0, 0), float3(0, .125, 0), .07);\n    float leftLegMid =  Sphere(leftLegMidPos,
+      .075);\n    \n    float rightLegUpper = Capsule(rightLegUpperPos, float3(0,
+      0, 0), float3(0, .125, 0), .07);\n    float rightLegLower = Capsule(rightLegLowerPos,
+      float3(0, 0, 0), float3(0, .125, 0), .07);\n    float rightLegMid =  Sphere(rightLegMidPos,
+      .075);\n\n    float result1 = SmoothMin(torsoUpper, torsoLower, _Smooth);\n   
       float result2 = SmoothMin(leftArmUpper, leftArmLower, _Smooth);\n    float
       result3 = SmoothMin(rightArmUpper, rightArmLower, _Smooth);\n    float result4
       = SmoothMin(leftLegUpper, leftLegLower, _Smooth);\n    float result5 = SmoothMin(rightLegUpper,
@@ -158,12 +158,12 @@ MonoBehaviour:
       0, 0), float3(0, .15, 0), .075);\n    float rightArmMid =  Sphere(rightArmMidPos,
       .045);\n    float rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0),
       float3(0, .15, 0), .05);\n    \n    float leftLegUpper = Capsule(leftLegUpperPos,
-      float3(0, 0, 0), float3(0, .125, 0), .065);\n    float leftLegLower = Capsule(leftLegLowerPos,
-      float3(0, 0, 0), float3(0, .125, 0), .065);\n    float leftLegMid =  Sphere(leftLegMidPos,
-      .07);\n    \n    float rightLegUpper = Capsule(rightLegUpperPos, float3(0,
-      0, 0), float3(0, .125, 0), .065);\n    float rightLegLower = Capsule(rightLegLowerPos,
-      float3(0, 0, 0), float3(0, .125, 0), .065);\n    float rightLegMid =  Sphere(rightLegMidPos,
-      .07);\n\n    float4 result1 = float4(4.0 / head, 4.0 / torsoUpper, 4.0 / torsoMid,
+      float3(0, 0, 0), float3(0, .125, 0), .07);\n    float leftLegLower = Capsule(leftLegLowerPos,
+      float3(0, 0, 0), float3(0, .125, 0), .07);\n    float leftLegMid =  Sphere(leftLegMidPos,
+      .075);\n    \n    float rightLegUpper = Capsule(rightLegUpperPos, float3(0,
+      0, 0), float3(0, .125, 0), .07);\n    float rightLegLower = Capsule(rightLegLowerPos,
+      float3(0, 0, 0), float3(0, .125, 0), .07);\n    float rightLegMid =  Sphere(rightLegMidPos,
+      .075);\n\n    float4 result1 = float4(4.0 / head, 4.0 / torsoUpper, 4.0 / torsoMid,
       4.0 / torsoLower);\n    float4 result2 = float4(4.0 / torsoLowerExtra, 4.0
       / leftArmUpper, 4.0 / leftArmMid, 4.0 / leftArmLower);\n    float4 result3
       = float4(4.0 / rightArmUpper, 4.0 / rightArmMid, 4.0 / rightArmLower, 4.0 /
@@ -183,7 +183,7 @@ MonoBehaviour:
       fixed3 final = normalize(fixed3(\n        computeAlbedoPart1 +\n        computeAlbedoPart2
       +\n        computeAlbedoPart3 +\n        computeAlbedoPart4 +\n        computeAlbedoPart5));\n\n   
       o.Albedo = final;\n}"
-    folded: 1
+    folded: 0
   constants: {fileID: 11400000, guid: b54b57bcc672e49638fe9b2da609c4df, type: 2}
   basicFolded: 0
   conditionsFolded: 0

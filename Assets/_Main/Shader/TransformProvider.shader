@@ -44,10 +44,9 @@ _LeftLegMidColor("LeftLegMid Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _RightLegUpperColor("RightLegUpper Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _RightLegLowerColor("RightLegLower Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _RightLegMidColor("RightLegMid Color", Color) = (1.0, 1.0, 1.0, 1.0)
-
 // @endblock
 }
-    
+
 SubShader
 {
 
