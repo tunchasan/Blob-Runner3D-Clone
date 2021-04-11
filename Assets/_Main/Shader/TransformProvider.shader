@@ -105,7 +105,7 @@ inline float DistanceFunction(float3 wpos)
     float4 torsoUpperPos = mul(_TorsoUpper, float4(wpos, 1.0));
     float4 torsoMidPos = mul(_TorsoMid, float4(wpos, 1.0));
     float4 torsoLowerPos = mul(_TorsoLower, float4(wpos, 1.0));
-    float4 torsoLowerExtraPos = mul(_TorsoMidExtra, float4(wpos, 1.0));
+    float4 torsoMidExtraPos = mul(_TorsoMidExtra, float4(wpos, 1.0));
     float4 leftArmUpperPos = mul(_LeftArmUpper, float4(wpos, 1.0));
     float4 leftArmMidPos = mul(_LeftArmMid, float4(wpos, 1.0));
     float4 leftArmLowerPos = mul(_LeftArmLower, float4(wpos, 1.0));
@@ -123,7 +123,7 @@ inline float DistanceFunction(float3 wpos)
     float torsoUpper = Capsule(torsoUpperPos, float3(0, 0, 0), float3(0, .15, 0), .125);
     float torsoMid = Sphere(torsoMidPos, .125);
     float torsoLower = Sphere(torsoLowerPos, .16);
-    float torsoLowerExtra =  Sphere(torsoLowerExtraPos, .16);
+    float torsoLowerExtra =  Sphere(torsoMidExtraPos, .16);
     
     float leftArmUpper = Capsule(leftArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .075);
     float leftArmMid =  Sphere(leftArmMidPos, .04);
