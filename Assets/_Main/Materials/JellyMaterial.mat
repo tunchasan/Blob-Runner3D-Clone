@@ -32,7 +32,7 @@ Material:
     - _ShadowExtraBias: 0
     - _ShadowLoop: 50
     - _ShadowMinDistance: 0.0342
-    - _Smooth: 20
+    - _Smooth: 17.5
     - _ZWrite: 1
     m_Colors:
     - _CapsuleColor: {r: 1, g: 0, b: 0, a: 1}
