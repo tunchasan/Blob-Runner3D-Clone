@@ -267,38 +267,6 @@ inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
         computeAlbedoPart4 +
         computeAlbedoPart5));
 
-    // float4 cPos = mul(_Cube, float4(wpos, 1.0));
-    // float4 sPos = mul(_Sphere, float4(wpos, 1.0));
-    // float4 tPos = mul(_Torus, float4(wpos, 1.0));
-    // float4 pPos = mul(_Plane, float4(wpos, 1.0));
-    //
-    // float4 c1Pos = mul(_Cube1, float4(wpos, 1.0));
-    // float4 c2Pos = mul(_Cube2, float4(wpos, 1.0));
-    //
-    // float s = Sphere(sPos, _Scale);
-    // float c = Box(cPos, 0.5);
-    // float t = Torus(tPos, float2(0.5, 0.2));
-    // float p = Plane(pPos, float3(0, 1, 0));
-    //
-    // float c1 = Box(c1Pos, 0.5);
-    // float c2 = Box(c2Pos, 0.5);
-    //
-    // float4 a = float4(2.0 / s, 2.0 / c, 2.0 / t, 2.0 / p);
-    //
-    // float4 b = float4(2.0 / c1, 2.0 / c2, 0, 0);
-    //
-    // fixed3 computeAlbedo1 =
-    //     a.x * _SphereColor +
-    //     a.y * _CubeColor +
-    //     a.z * _TorusColor +
-    //     a.w * _PlaneColor;
-    //
-    // fixed3 computeAlbedo2 =
-    //     b.x * _Cube1Color +
-    //     b.y * _Cube2Color;
-    //
-    // fixed3 result = normalize(fixed3(computeAlbedo1 + computeAlbedo2));
-    //
     o.Albedo = final;
 }
 // @endblock
