@@ -31,7 +31,7 @@ _HeadColor("Head Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _TorsoUpperColor("TorsoUpper Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _TorsoMidColor("TorsoMid Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _TorsoLowerColor("TorsoLower Color", Color) = (1.0, 1.0, 1.0, 1.0)
-_TorsoLowerExtraColor("TorsoLowerExtra Color", Color) = (1.0, 1.0, 1.0, 1.0)
+_TorsoMidExtraColor("TorsoMidExtra Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _LeftArmUpperColor("LeftArmUpper Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _LeftArmMidColor("LeftArmMid Color", Color) = (1.0, 1.0, 1.0, 1.0)
 _LeftArmLowerColor("LeftArmLower Color", Color) = (1.0, 1.0, 1.0, 1.0)
@@ -82,7 +82,7 @@ float4x4 _Head;
 float4x4 _TorsoUpper;
 float4x4 _TorsoMid;
 float4x4 _TorsoLower;
-float4x4 _TorsoLowerExtra;
+float4x4 _TorsoMidExtra;
 float4x4 _LeftArmUpper;
 float4x4 _LeftArmMid;
 float4x4 _LeftArmLower;
@@ -105,7 +105,7 @@ inline float DistanceFunction(float3 wpos)
     float4 torsoUpperPos = mul(_TorsoUpper, float4(wpos, 1.0));
     float4 torsoMidPos = mul(_TorsoMid, float4(wpos, 1.0));
     float4 torsoLowerPos = mul(_TorsoLower, float4(wpos, 1.0));
-    float4 torsoLowerExtraPos = mul(_TorsoLowerExtra, float4(wpos, 1.0));
+    float4 torsoLowerExtraPos = mul(_TorsoMidExtra, float4(wpos, 1.0));
     float4 leftArmUpperPos = mul(_LeftArmUpper, float4(wpos, 1.0));
     float4 leftArmMidPos = mul(_LeftArmMid, float4(wpos, 1.0));
     float4 leftArmLowerPos = mul(_LeftArmLower, float4(wpos, 1.0));
@@ -169,7 +169,7 @@ float4 _HeadColor;
 float4 _TorsoUpperColor;
 float4 _TorsoMidColor;
 float4 _TorsoLowerColor;
-float4 _TorsoLowerExtraColor;
+float4 _TorsoMidExtraColor;
 float4 _LeftArmUpperColor;
 float4 _LeftArmMidColor;
 float4 _LeftArmLowerColor;
@@ -190,7 +190,7 @@ inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
     float4 torsoUpperPos = mul(_TorsoUpper, float4(wpos, 1.0));
     float4 torsoMidPos = mul(_TorsoMid, float4(wpos, 1.0));
     float4 torsoLowerPos = mul(_TorsoLower, float4(wpos, 1.0));
-    float4 torsoLowerExtraPos = mul(_TorsoLowerExtra, float4(wpos, 1.0));
+    float4 torsoMidExtraPos = mul(_TorsoMidExtra, float4(wpos, 1.0));
     float4 leftArmUpperPos = mul(_LeftArmUpper, float4(wpos, 1.0));
     float4 leftArmMidPos = mul(_LeftArmMid, float4(wpos, 1.0));
     float4 leftArmLowerPos = mul(_LeftArmLower, float4(wpos, 1.0));
@@ -208,7 +208,7 @@ inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
     float torsoUpper = Capsule(torsoUpperPos, float3(0, 0, 0), float3(0, .15, 0), .125);
     float torsoMid = Sphere(torsoMidPos, .125);
     float torsoLower = Sphere(torsoLowerPos, .16);
-    float torsoLowerExtra =  Sphere(torsoLowerExtraPos, .16);
+    float torsoLowerExtra =  Sphere(torsoMidExtraPos, .16);
     
     float leftArmUpper = Capsule(leftArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), .075);
     float leftArmMid =  Sphere(leftArmMidPos, .04);
@@ -239,7 +239,7 @@ inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
         result1.w * _TorsoLowerColor;
 
     fixed3 computeAlbedoPart2 =
-        result2.x * _TorsoLowerExtraColor +
+        result2.x * _TorsoMidExtraColor +
         result2.y * _LeftArmUpperColor +
         result2.z * _LeftArmMidColor +
         result2.w * _LeftArmLowerColor;

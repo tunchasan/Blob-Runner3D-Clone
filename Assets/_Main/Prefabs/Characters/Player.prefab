@@ -572,7 +572,7 @@ MonoBehaviour:
     transform: {fileID: 5884240118375124854}
   - name: _RightLegMid
     transform: {fileID: 5884240118272853578}
-  - name: _TorsoLowerExtra
+  - name: _TorsoMidExtra
     transform: {fileID: 5884240118320267304}
 --- !u!33 &5657330214385849727
 MeshFilter:
@@ -622,7 +622,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5884240118320267304}
   m_Layer: 0
-  m_Name: _TorsoLowerExtra
+  m_Name: _TorsoMidExtra
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
