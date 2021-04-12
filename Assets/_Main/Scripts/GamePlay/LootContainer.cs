@@ -70,9 +70,9 @@ public class LootContainer : MonoBehaviour
     {
         transform.SetParent(_targetTransform);
 
-        transform.DOLocalMove(new Vector3(0, 1, 0), .75F);
+        transform.DOLocalMove(new Vector3(0, 1, 0), 1F);
 
-        DOTween.To(() => _renderer.GetFloat("_Scale"), x => _renderer.SetFloat("_Scale", x), -.1F, 1F).
+        DOTween.To(() => _renderer.GetFloat("_Scale"), x => _renderer.SetFloat("_Scale", x), -.1F, 1.5F).
             OnComplete(() => Destroy(gameObject));
     }
 
