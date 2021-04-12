@@ -12,15 +12,17 @@ public class LootContainer : MonoBehaviour
 
     [SerializeField] private Color lootColor;
     
-    private MeshRenderer _renderer = null;
+    private Material _renderer = null;
     
     private List<Tweener> _tweeners = new List<Tweener>();
+
+    private Transform _targetTransform = null;
 
     private bool _shouldAnimate = true;
 
     private void Start()
     {
-        _renderer = GetComponentInChildren<MeshRenderer>();
+        _renderer = GetComponentInChildren<MeshRenderer>().sharedMaterial;
 
         StartIdleAnimation();
     }
@@ -66,11 +68,28 @@ public class LootContainer : MonoBehaviour
 
     private void StartInteractAnimation()
     {
-        // TODO
+        transform.SetParent(_targetTransform);
+
+        transform.DOLocalMove(new Vector3(0, 1, 0), .75F);
+
+        DOTween.To(() => _renderer.GetFloat("_Scale"), x => _renderer.SetFloat("_Scale", x), -.1F, 1F).
+            OnComplete(() => Destroy(gameObject));
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // TODO
+        if (other.TryGetComponent(out Player player))
+        {
+            _targetTransform = player.transform;
+            
+            StopIdleAnimation();
+
+            StartInteractAnimation();
+        }
+    }
+
+    private void OnDestroy()
+    {
+        _renderer.SetFloat("_Scale", .1F);
     }
 }

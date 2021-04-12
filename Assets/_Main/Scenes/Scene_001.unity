@@ -1307,6 +1307,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1077585087}
   - component: {fileID: 1077585088}
+  - component: {fileID: 1077585089}
+  - component: {fileID: 1077585090}
   m_Layer: 0
   m_Name: LootT1
   m_TagString: Untagged
@@ -1348,6 +1350,35 @@ MonoBehaviour:
   - {fileID: 850990333}
   - {fileID: 708331936}
   lootColor: {r: 1, g: 0.29803923, b: 0.29803923, a: 1}
+--- !u!54 &1077585089
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077585086}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &1077585090
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077585086}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0.05, y: 0.05, z: 0}
 --- !u!1 &1175174273
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1559,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1510224074}
   - component: {fileID: 1510224075}
+  - component: {fileID: 1510224076}
+  - component: {fileID: 1510224077}
   m_Layer: 0
   m_Name: LootT3
   m_TagString: Untagged
@@ -1569,6 +1602,35 @@ MonoBehaviour:
   - {fileID: 915276140}
   - {fileID: 1720236172}
   lootColor: {r: 0.5529412, g: 0, b: 1, a: 1}
+--- !u!54 &1510224076
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510224073}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &1510224077
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1510224073}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0.05, y: 0.05, z: 0}
 --- !u!1 &1569833475
 GameObject:
   m_ObjectHideFlags: 0
@@ -2241,6 +2303,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1945288387}
   - component: {fileID: 1945288388}
+  - component: {fileID: 1945288389}
+  - component: {fileID: 1945288390}
   m_Layer: 0
   m_Name: LootT2
   m_TagString: Untagged
@@ -2282,6 +2346,35 @@ MonoBehaviour:
   - {fileID: 96563054}
   - {fileID: 1472479056}
   lootColor: {r: 0.3254902, g: 1, b: 0.7137255, a: 1}
+--- !u!54 &1945288389
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945288386}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &1945288390
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945288386}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Center: {x: 0.05, y: 0.05, z: 0}
 --- !u!1 &1956181845
 GameObject:
   m_ObjectHideFlags: 0
