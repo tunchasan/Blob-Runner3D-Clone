@@ -139,7 +139,7 @@ public class PController : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(0, .75F));
 
             var randomLocation = 
-                new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1)) * 1.55F;
+                new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1)) * 1.35F;
 
             piece.DOLocalMove(randomLocation, .75F);
         
