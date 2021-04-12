@@ -23,8 +23,6 @@ public class BodyPart : MonoBehaviour
     {
         if (other.CompareTag("Obstacle") && hasBroken == false)
         {
-            Debug.Log(gameObject.name);
-            
             var container = Instantiate(containerPrefab, transform.position, containerPrefab.transform.rotation);
             
             foreach (var bodyPart in relatedBodyParts)
@@ -42,7 +40,7 @@ public class BodyPart : MonoBehaviour
             }
             
             // Animate Container
-            container.GetComponent<JellContainer>().StartAnimation();
+            container.GetComponent<JellyContainer>().StartAnimation();
         }
     }
 

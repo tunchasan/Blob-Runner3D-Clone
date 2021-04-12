@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class JellContainer : MonoBehaviour
+public class JellyContainer : MonoBehaviour
 {
     public void StartAnimation(float delay = 0)
     {
