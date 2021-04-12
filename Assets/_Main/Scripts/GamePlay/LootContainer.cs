@@ -70,10 +70,12 @@ public class LootContainer : MonoBehaviour
     {
         transform.SetParent(_targetTransform);
 
-        transform.DOLocalMove(new Vector3(0, 1, 0), 1F);
+        transform.DOLocalMove(new Vector3(0, 1, 0), .75F);
 
-        DOTween.To(() => _renderer.GetFloat("_Scale"), x => _renderer.SetFloat("_Scale", x), -.1F, 1.5F).
+        DOTween.To(() => _renderer.GetFloat("_Scale"), x => _renderer.SetFloat("_Scale", x), -.1F, 1F).
             OnComplete(() => Destroy(gameObject));
+        
+        _targetTransform.GetComponent<MergeController>().Merge(lootColor);
     }
 
     private void OnTriggerEnter(Collider other)
