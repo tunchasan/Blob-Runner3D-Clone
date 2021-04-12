@@ -11,26 +11,30 @@ public class BodyPart : MonoBehaviour
 
     [SerializeField] private GameObject containerPrefab = null;
 
+    [SerializeField] private string shaderParam = "";
+    
     private Tweener _anim1 = null;
 
     private Tweener _anim2 = null;
-    
-    private bool hasBroken = false;
 
-    private bool shouldAnimate = true;
-    
+    private bool _shouldAnimate = true;
+
+    public bool HasBroken { get; private set; } = false;
+
+    public string ShaderParam => shaderParam;
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle") && hasBroken == false)
+        if (other.CompareTag("Obstacle") && HasBroken == false)
         {
             var container = Instantiate(containerPrefab, transform.position, containerPrefab.transform.rotation);
             
             foreach (var bodyPart in relatedBodyParts)
             {
-                if(bodyPart.hasBroken) continue;
+                if(bodyPart.HasBroken) continue;
                 
                 // The body part has been broken. 
-                bodyPart.hasBroken = true;
+                bodyPart.HasBroken = true;
                 
                 bodyPart.transform.SetParent(container.transform);
 
@@ -48,7 +52,7 @@ public class BodyPart : MonoBehaviour
     {
         Invoke(nameof(StopAllAnimation), 5);
                 
-        while (shouldAnimate)
+        while (_shouldAnimate)
         {
             var randomLocation = 
                 new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1)) / (5 * transform.parent.lossyScale.x);
@@ -64,7 +68,7 @@ public class BodyPart : MonoBehaviour
 
     public void StopAllAnimation()
     {
-        shouldAnimate = false;
+        _shouldAnimate = false;
         
         _anim1.Kill();
         

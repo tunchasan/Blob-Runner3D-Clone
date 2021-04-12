@@ -1902,25 +1902,6 @@ Transform:
   m_Father: {fileID: 1077585087}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1638269387 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8117808517513198077, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8035518201791926037}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1638269392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1638269387}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd39521d2ce3a1b40bf83bb0ac306af6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  setting: {fileID: 11400000, guid: 0d3505090fff1cc49b7ef524bf09fd63, type: 2}
 --- !u!1 &1684240914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2519,6 +2500,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 885116865}
     m_Modifications:
+    - target: {fileID: 1130444737, guid: 588ef6bf278b7db47b509d5e3de3b75e, type: 3}
+      propertyPath: mergeScaleTargetInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 0d3505090fff1cc49b7ef524bf09fd63,
+        type: 2}
     - target: {fileID: 2458961956103106721, guid: 588ef6bf278b7db47b509d5e3de3b75e,
         type: 3}
       propertyPath: m_RootOrder
@@ -2578,11 +2564,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6320950093004347634, guid: 588ef6bf278b7db47b509d5e3de3b75e,
-        type: 3}
-      propertyPath: speed
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 588ef6bf278b7db47b509d5e3de3b75e, type: 3}

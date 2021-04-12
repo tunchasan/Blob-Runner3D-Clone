@@ -24,4 +24,47 @@ public class ShaderSetting : ScriptableObject
     public float RightLegUpperScale = 0;
     public float RightLegLowerScale = 0;
     public float RightLegMidScale = 0;
+
+    public float ValueByString(string value)
+    {
+        switch (value)
+        {
+            case "_HeadScale":
+                return HeadScale;
+            case "_TorsoUpperScale":
+                return TorsoUpperScale;
+            case "_TorsoMidScale":
+                return TorsoMidScale;
+            case "_TorsoLowerScale":
+                return TorsoLowerScale;
+            case "_TorsoMidExtraScale":
+                return TorsoMidExtraScale;
+            case "_LeftArmUpperScale":
+                return LeftArmUpperScale;
+            case "_LeftArmMidScale":
+                return LeftArmMidScale;
+            case "_LeftArmLowerScale":
+                return LeftArmLowerScale;
+            case "_RightArmUpperScale":
+                return RightArmUpperScale;
+            case "_RightArmMidScale":
+                return RightArmMidScale;
+            case "_RightArmLowerScale":
+                return RightArmLowerScale;
+            case "_LeftLegUpperScale":
+                return LeftLegUpperScale;
+            case "_LeftLegLowerScale":
+                return LeftLegLowerScale;
+            case "_LeftLegMidScale":
+                return LeftLegMidScale;
+            case "_RightLegUpperScale":
+                return RightLegUpperScale;
+            case "_RightLegLowerScale":
+                return RightLegLowerScale;
+            case "_RightLegMidScale":
+                return RightLegMidScale;
+            default:
+                return 0;
+        }
+    }
 }
