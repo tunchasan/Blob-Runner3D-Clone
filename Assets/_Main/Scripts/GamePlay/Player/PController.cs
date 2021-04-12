@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PController : MonoBehaviour
 {
@@ -10,8 +12,12 @@ public class PController : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5;
     
     [SerializeField] private Vector2 movementLimit = Vector2.one;
+
+    [SerializeField] private GameObject model = null;
     
     private PAnimationController _animationController = null;
+
+    private MeshRenderer _renderer = null;
 
     private Player _player = null;
 
@@ -24,6 +30,8 @@ public class PController : MonoBehaviour
         _player = GetComponent<Player>();
         
         _animationController = GetComponent<PAnimationController>();
+
+        _renderer = GetComponentInChildren<MeshRenderer>();
     }
 
     private void FixedUpdate()
@@ -44,6 +52,11 @@ public class PController : MonoBehaviour
         }
         
         ValidateLocation();
+    }
+    
+    public void StopMovement()
+    {
+        _canMove = false;
     }
 
     private bool CanMove()
@@ -85,6 +98,53 @@ public class PController : MonoBehaviour
         }
 
         transform.position = currentLocation;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("AFinish"))
+        {
+            _animationController.DisableAnimator();
+
+            model.transform.DOScale(Vector3.one * -.25F, 1F).OnComplete(StartFinishAnimation);
+
+            model.transform.DOMoveY(1.5F, 1);
+
+            DOTween.To(() => _renderer.sharedMaterial.GetFloat("_Smooth"),
+                x => _renderer.sharedMaterial.SetFloat("_Smooth", x), 9, 2);
+
+            GameManager.Instance.RestartGame(15);
+        }
+        
+        else if (other.CompareTag("ASpeed"))
+        {
+            _animationController.IncreaseRunAnimationRate(2);
+
+            DOTween.To(() => speed, x => speed = x, speed * 2, 4).SetEase(Ease.InCirc);
+        }
+    }
+
+    private void StartFinishAnimation()
+    {
+        foreach (var piece in _player.BodyParts)
+        {
+            StartCoroutine(Animate(piece.transform));
+        }
+    }
+    
+    private IEnumerator Animate(Transform piece)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(0, .75F));
+
+            var randomLocation = 
+                new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1)) * 1.55F;
+
+            piece.DOLocalMove(randomLocation, .75F);
+        
+            yield return new WaitForSeconds(.75F);
+        }
     }
 
     private void OnEnable()

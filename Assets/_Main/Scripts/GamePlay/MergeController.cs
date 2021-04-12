@@ -16,8 +16,6 @@ public class MergeController : MonoBehaviour
     
     [SerializeField] private ShaderSetting mergeScaleTargetInfo;
 
-    [SerializeField] private Transform mergeSpawnPoint = null;
-
     [SerializeField]
     private List<MergeInfo> mergeParts = new List<MergeInfo>();
     
