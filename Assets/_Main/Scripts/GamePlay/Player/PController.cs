@@ -17,8 +17,6 @@ public class PController : MonoBehaviour
 
     private bool _canMove = true;
 
-    private bool _isPressed = false;
-    
     private Vector2 _direction = Vector2.zero;
     
     private void Start()
@@ -60,14 +58,12 @@ public class PController : MonoBehaviour
 
     private void OnReleased()
     {
-        _isPressed = false;
-
         _direction = Vector2.zero;
     }
 
     private void OnPressed()
     {
-        _isPressed = true;
+        // TODO
     }
 
     private void ValidateLocation()
