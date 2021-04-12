@@ -1047,6 +1047,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924a3db36ff351648b4aa90342b18bdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mergeScaleTargetInfo: {fileID: 11400000, guid: 0d3505090fff1cc49b7ef524bf09fd63,
+    type: 2}
   mergeParts: []
 --- !u!95 &1063610351518645025
 Animator:
