@@ -56,6 +56,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 1802791997158850051}
   hasBroken: 0
+  bodyState: 6
 --- !u!65 &8481322818279939269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -137,6 +138,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 177373541418584093}
   hasBroken: 0
+  bodyState: 9
 --- !u!65 &8452917937474356981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -219,6 +221,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 8814062720959141725}
   hasBroken: 0
+  bodyState: 10
 --- !u!65 &1796020244233713012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -305,6 +308,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 8438121978548136596}
   hasBroken: 0
+  bodyState: 17
 --- !u!65 &3560087107019290716
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -387,6 +391,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 8814062720959141725}
   hasBroken: 0
+  bodyState: 7
 --- !u!65 &8190549984117424928
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -476,6 +481,7 @@ MonoBehaviour:
   - {fileID: 8438121978548136596}
   - {fileID: 8814062720959141725}
   hasBroken: 0
+  bodyState: 15
 --- !u!65 &783253735730663400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -557,6 +563,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 8468672387554774613}
   hasBroken: 0
+  bodyState: 2
 --- !u!65 &6443070918562451543
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -638,6 +645,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 3074952190966509519}
   hasBroken: 0
+  bodyState: 5
 --- !u!65 &4599880109623956283
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -725,6 +733,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 1068552151245805776}
   hasBroken: 0
+  bodyState: 14
 --- !u!65 &4459601237979914160
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -807,6 +816,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 1802791997158850051}
   hasBroken: 0
+  bodyState: 3
 --- !u!65 &3837765609835157880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -888,6 +898,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 3800739931152454161}
   hasBroken: 0
+  bodyState: 12
 --- !u!65 &4567213817013666651
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -968,6 +979,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 8814062720959141725}
   hasBroken: 0
+  bodyState: 13
 --- !u!135 &3854997957053532952
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1174,6 +1186,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 5894025763104983709}
   hasBroken: 0
+  bodyState: 1
 --- !u!135 &8774689124212286730
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1262,6 +1275,7 @@ MonoBehaviour:
   - {fileID: 1802791997158850051}
   - {fileID: 1068552151245805776}
   hasBroken: 0
+  bodyState: 16
 --- !u!65 &7840085845038367884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1342,6 +1356,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 4523681695996422695}
   hasBroken: 0
+  bodyState: 4
 --- !u!135 &7144445782482754656
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1422,6 +1437,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 5367650892266645983}
   hasBroken: 0
+  bodyState: 8
 --- !u!135 &7616633550611867699
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1502,6 +1518,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 5269207677888654112}
   hasBroken: 0
+  bodyState: 11
 --- !u!135 &7496894109258125891
 SphereCollider:
   m_ObjectHideFlags: 0

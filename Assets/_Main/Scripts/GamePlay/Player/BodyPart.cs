@@ -18,6 +18,8 @@ public class BodyPart : MonoBehaviour
     [SerializeField] private BodyPart[] requiredBodyParts;
 
     [SerializeField] private bool hasBroken = false;
+
+    [SerializeField] private BodyPartState bodyState = BodyPartState.None;
     
     private Tweener _anim1 = null;
 
@@ -33,6 +35,8 @@ public class BodyPart : MonoBehaviour
 
     public bool HasBroken => hasBroken;
 
+    public BodyPartState currentState => bodyState;
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Obstacle") && hasBroken == false)

@@ -13,8 +13,10 @@ public class Player : MonoBehaviour
     public Action OnPlayerDead;
 
     public BodyPart[] BodyParts => _bodyParts;
+
+    public bool HasDead => _hasDead;
     
-    private void Start()
+    private void Awake()
     {
         _bodyParts = GetComponentsInChildren<BodyPart>();
 
@@ -53,5 +55,16 @@ public class Player : MonoBehaviour
         }
 
         return check;
+    }
+
+    public BodyPart FindBodyPart(BodyPartState searchingPart)
+    {
+        foreach (var part in _bodyParts)
+        {
+            if (part.currentState.Equals(searchingPart))
+                return part;
+        }
+
+        return null;
     }
 }

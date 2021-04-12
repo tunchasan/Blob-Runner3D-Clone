@@ -25,6 +25,8 @@ public class PController : MonoBehaviour
 
     private Vector2 _direction = Vector2.zero;
     
+    public PlayerState currentState { get; private set; } = PlayerState.OnStandRun;
+    
     private void Start()
     {
         _player = GetComponent<Player>();
@@ -32,6 +34,8 @@ public class PController : MonoBehaviour
         _animationController = GetComponent<PAnimationController>();
 
         _renderer = GetComponentInChildren<MeshRenderer>();
+
+        StartCoroutine(DetermineAnimationStateViaBrokenParts());
     }
 
     private void FixedUpdate()
@@ -52,6 +56,52 @@ public class PController : MonoBehaviour
         }
         
         ValidateLocation();
+    }
+
+    private IEnumerator DetermineAnimationStateViaBrokenParts()
+    {
+        var leftLegUpper = _player.FindBodyPart(BodyPartState.LeftLegUpper);
+        var rightLegUpper = _player.FindBodyPart(BodyPartState.RightLegUpper);
+        
+        while (true)
+        {
+            if (_player.HasDead) break;
+            
+            yield return new WaitForSeconds(.1F);
+
+            if (leftLegUpper.HasBroken && rightLegUpper.HasBroken)
+            {
+                UpdateState(PlayerState.OnCrawlRun);
+                
+                _animationController.StartCrawlWalkAnimation();
+            }
+            
+            else if (leftLegUpper.HasBroken && rightLegUpper.HasBroken == false)
+            {
+                UpdateState(PlayerState.OnRightRun);
+                
+                _animationController.StartRightWalkAnimation();
+            }
+            
+            else if (leftLegUpper.HasBroken == false && rightLegUpper.HasBroken)
+            {
+                UpdateState(PlayerState.OnLeftRun);
+                
+                _animationController.StartLeftWalkAnimation();
+            }
+
+            else
+            {
+                UpdateState(PlayerState.OnStandRun);
+                
+                _animationController.StartStandAnimation();
+            }
+        }
+    }
+
+    private void UpdateState(PlayerState newState)
+    {
+        currentState = newState;
     }
     
     public void StopMovement()
@@ -139,7 +189,7 @@ public class PController : MonoBehaviour
             yield return new WaitForSeconds(Random.Range(0, .75F));
 
             var randomLocation = 
-                new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1)) * 1.35F;
+                new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1)) * 1.15F;
 
             piece.DOLocalMove(randomLocation, .75F);
         
