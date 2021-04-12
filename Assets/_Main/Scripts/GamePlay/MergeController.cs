@@ -15,9 +15,14 @@ public class MergeController : MonoBehaviour
     }
     
     [SerializeField] private ShaderSetting mergeScaleTargetInfo;
-    
+
+    [SerializeField] private Transform mergeSpawnPoint = null;
+
     [SerializeField]
     private List<MergeInfo> mergeParts = new List<MergeInfo>();
+    
+    [SerializeField]
+    private List<MergeInfo> debug = new List<MergeInfo>();
     
     private Material _renderer = null;
 
@@ -48,7 +53,7 @@ public class MergeController : MonoBehaviour
     public void Merge(Color targetColor)
     {
         var list = GetValidMergeTargetParts();
-        
+
         foreach (var targetPart in list)
         {
             var partTransform = targetPart.bodyPart.transform;
@@ -63,21 +68,22 @@ public class MergeController : MonoBehaviour
             partTransform.SetParent(targetPart.parent);
         
             // Set position ,rotation, scale
-            partTransform.localPosition = Vector3.zero;
+            partTransform.position = transform.position;
             partTransform.localEulerAngles = targetPart.mergeRotation;
             partTransform.localScale = targetPart.mergeScale;
             
             // Stop animations
             targetPart.bodyPart.StopAllAnimation();
-
+            
             // Scale Animation
             targetPart.bodyPart.AnimateScaleToInitial(
                 mergeScaleTargetInfo.ValueByString(targetPart.bodyPart.ShaderParam), _renderer, null);
 
             // Move Animation
-            partTransform.DOLocalMove(targetPart.mergePosition, 1F).OnComplete(() =>
-                targetPart.bodyPart.UpdateBrokenStatus());
-
+            partTransform.DOLocalMove(targetPart.mergePosition, 1.5F).OnComplete(() =>
+            {
+                targetPart.bodyPart.UpdateBrokenStatus();
+            });
         }
     }
 
@@ -89,16 +95,20 @@ public class MergeController : MonoBehaviour
         {
             if (part.bodyPart.HasBroken)
             {
-                foreach (var bodyPart in part.bodyPart.relatedBodyPart)
-                {
-                    if (bodyPart.HasBroken == false)
-                    {
-                        list.Add(part);
-                        
-                        break;
-                    }
-                }
+                list.Add(part);
+                
+                // foreach (var bodyPart in part.bodyPart.relatedBodyPart)
+                // {
+                //     if (bodyPart.HasBroken == false)
+                //     {
+                //         list.Add(part);
+                //         
+                //         break;
+                //     }
+                // }
             }
+
+            debug = list;
         }
 
         return list;

@@ -17,6 +17,8 @@ public class BodyPart : MonoBehaviour
     
     [SerializeField] private BodyPart[] requiredBodyParts;
 
+    [SerializeField] private bool hasBroken = false;
+    
     private Tweener _anim1 = null;
 
     private Tweener _anim2 = null;
@@ -29,11 +31,11 @@ public class BodyPart : MonoBehaviour
 
     public BodyPart[] relatedBodyPart => requiredBodyParts;
 
-    public bool HasBroken { get; private set; } = false;
+    public bool HasBroken => hasBroken;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Obstacle") && HasBroken == false)
+        if (other.CompareTag("Obstacle") && hasBroken == false)
         {
             var container = Instantiate(containerPrefab, transform.position, containerPrefab.transform.rotation);
             
@@ -42,7 +44,7 @@ public class BodyPart : MonoBehaviour
                 if(bodyPart.HasBroken) continue;
                 
                 // The body part has been broken. 
-                UpdateBrokenStatus(true);
+                bodyPart.UpdateBrokenStatus(true);
                 
                 bodyPart.transform.SetParent(container.transform);
 
@@ -91,12 +93,12 @@ public class BodyPart : MonoBehaviour
     public void AnimateScaleToInitial(float targetScale, Material renderer, Action onComplete = null)
     {
         DOTween.To(() => renderer.GetFloat(shaderParam), 
-            x => renderer.SetFloat(shaderParam, x), targetScale, .5F). 
+            x => renderer.SetFloat(shaderParam, x), targetScale, .75F). 
             OnComplete(() => onComplete?.Invoke());
     }
 
     public void UpdateBrokenStatus(bool state = false)
     {
-        HasBroken = state;
+        hasBroken = state;
     }
 }
