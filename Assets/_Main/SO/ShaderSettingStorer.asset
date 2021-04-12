@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 875ee323c9c8bf444a544005e61863b2, type: 3}
+  m_Name: ShaderSettingStorer
+  m_EditorClassIdentifier: 
+  TotalColor: {r: 1, g: 0.627451, b: 0, a: 1}
+  Smooth: 17.5
+  HeadScale: 0.1
+  TorsoUpperScale: 0.125
+  TorsoMidScale: 0.125
+  TorsoLowerScale: 0.16
+  TorsoMidExtraScale: 0.16
+  LeftArmUpperScale: 0.075
+  LeftArmMidScale: 0.04
+  LeftArmLowerScale: 0.05
+  RightArmUpperScale: 0.075
+  RightArmMidScale: 0.045
+  RightArmLowerScale: 0.05
+  LeftLegUpperScale: 0.07
+  LeftLegLowerScale: 0.07
+  LeftLegMidScale: 0.075
+  RightLegUpperScale: 0.07
+  RightLegLowerScale: 0.07
+  RightLegMidScale: 0.06

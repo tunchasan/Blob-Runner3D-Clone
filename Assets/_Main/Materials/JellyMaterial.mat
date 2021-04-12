@@ -23,16 +23,34 @@ Material:
     - _Cull: 2
     - _DistanceMultiplier: 1
     - _Glossiness: 0.85
+    - _HeadScale: 0.1
+    - _LeftArmLowerScale: 0.05
+    - _LeftArmMidScale: 0.04
+    - _LeftArmUpperScale: 0.075
+    - _LeftLegLowerScale: 0.07
+    - _LeftLegMidScale: 0.075
+    - _LeftLegUpperScale: 0.07
     - _Loop: 50
     - _Metallic: 0
     - _MinDistance: 0.0243
     - _NormalDelta: 0.0001
+    - _RightArmLowerScale: 0.05
+    - _RightArmMidScale: 0.045
+    - _RightArmUpperScale: 0.075
+    - _RightLegLowerScale: 0.07
+    - _RightLegMidScale: 0.06
+    - _RightLegUpperScale: 0.07
     - _Scale: 0.1
     - _ScaleSphere: 0.5
     - _ShadowExtraBias: 0
     - _ShadowLoop: 50
     - _ShadowMinDistance: 0.0342
     - _Smooth: 17.5
+    - _TorsoLowerScale: 0.16
+    - _TorsoMidExtraScale: 0.16
+    - _TorsoMidScale: 0.125
+    - _TorsoUpperScale: 0.125
+    - _TotalScale: 0.1
     - _ZWrite: 1
     m_Colors:
     - _CapsuleColor: {r: 1, g: 0, b: 0, a: 1}
@@ -41,7 +59,7 @@ Material:
     - _Cube1Color: {r: 0, g: 1, b: 0.7089348, a: 1}
     - _Cube2Color: {r: 1, g: 0.02157793, b: 0, a: 1}
     - _CubeColor: {r: 0.07450986, g: 1, b: 0, a: 1}
-    - _HeadColor: {r: 1, g: 0.6261434, b: 0, a: 1}
+    - _HeadColor: {r: 1, g: 0.627451, b: 0, a: 1}
     - _LeftArmLowerColor: {r: 1, g: 0.627451, b: 0, a: 1}
     - _LeftArmMidColor: {r: 1, g: 0.627451, b: 0, a: 1}
     - _LeftArmUpperColor: {r: 1, g: 0.627451, b: 0, a: 1}
