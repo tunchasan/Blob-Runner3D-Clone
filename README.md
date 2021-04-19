@@ -1,6 +1,6 @@
 # Blob-Runner3D-Clone
 
-This is a challenge to make Blob Runner 3D Clone in 3 days. I created a custom shader to make it look more jelly-like on the player's material. 
+This is a challenge to make Blob Runner 3D Clone in 3 days. I created a custom shader with using uRaymarching to make it look more jelly-like on the player's material. 
 
 #### 👉 Dynamic animation system that works depending on the broken parts in the body. 
 #### 👉 Soft-cut system to broke player's body parts that is hitted. 
