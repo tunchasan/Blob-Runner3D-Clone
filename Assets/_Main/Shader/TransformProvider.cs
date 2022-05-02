@@ -1,5 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 [ExecuteInEditMode]
 public class TransformProvider : MonoBehaviour
@@ -9,24 +8,31 @@ public class TransformProvider : MonoBehaviour
     {
         public string name;
         public Transform transform;
+
+        public Vector3 Position => transform.position;
+        public Quaternion Rotation => transform.rotation;
+        public Vector3 Scale => transform.localScale;
+    }
+    
+    [SerializeField] private Renderer targetRenderer = null;
+
+    [SerializeField] private NameTransformPair[] pairs;
+
+    private void Update()
+    {
+        Validate();
     }
 
-    [SerializeField]
-    NameTransformPair[] pairs;
-
-    void Update()
+    private void Validate()
     {
-        var renderer = GetComponent<Renderer>();
-        if (!renderer) return;
+        if (!targetRenderer) return;
 
-        var material = renderer.sharedMaterial;
+        var material = targetRenderer.sharedMaterial;
         if (!material) return;
         
         foreach (var pair in pairs)
         {
-            var pos = pair.transform.position;
-            var rot = pair.transform.rotation;
-            var mat = Matrix4x4.TRS(pos, rot, Vector3.one);
+            var mat = Matrix4x4.TRS(pair.Position, pair.Rotation, pair.Scale);
             var invMat = Matrix4x4.Inverse(mat);
             material.SetMatrix(pair.name, invMat);
         }
