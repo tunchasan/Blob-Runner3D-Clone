@@ -8,6 +8,11 @@ public class GameManager : Singleton<GameManager>
 {
     [SerializeField] private Player player = null;
 
+    private void Start()
+    {
+        Application.targetFrameRate = 120;
+    }
+
     public void RestartGame(float delay = 2)
     {
         StartCoroutine(WaitAndRestart(delay));

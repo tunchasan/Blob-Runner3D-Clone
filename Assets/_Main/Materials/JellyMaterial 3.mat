@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: JellyMaterial
+  m_Name: JellyMaterial 3
   m_Shader: {fileID: 4800000, guid: d36b7ffba7b1e4d39b4e60e89ae1f03d, type: 3}
   m_ShaderKeywords: _ZWRITE_ON
   m_LightmapFlags: 4
@@ -53,7 +53,7 @@ Material:
     - _TotalScale: 0.1
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.2622001, b: 0, a: 1}
+    - _BaseColor: {r: 0, g: 0.9051006, b: 1, a: 1}
     - _CapsuleColor: {r: 1, g: 0, b: 0, a: 1}
     - _CapsuleColor1: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -81,7 +81,7 @@ Material:
     - _Sphere1Color: {r: 1, g: 1, b: 1, a: 1}
     - _SphereColor: {r: 1, g: 0.6217325, b: 0, a: 1}
     - _TorseUpperColor: {r: 1, g: 1, b: 1, a: 1}
-    - _TorsoColor: {r: 0, g: 1, b: 0.10806155, a: 1}
+    - _TorsoColor: {r: 0, g: 1, b: 0.8951967, a: 1}
     - _TorsoDownColor: {r: 1, g: 1, b: 1, a: 1}
     - _TorsoLowerColor: {r: 1, g: 0.627451, b: 0, a: 1}
     - _TorsoLowerExtraColor: {r: 0, g: 0.39009237, b: 1, a: 1}

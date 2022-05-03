@@ -45,7 +45,7 @@ public class PController : MonoBehaviour
             // Handle Movement
             var direction = new Vector3(_direction.x * speed, 0, speed);
 
-            transform.position += direction * Time.fixedDeltaTime;
+            // transform.position += direction * Time.fixedDeltaTime;
             
             // Handle Rotation
             var currRotation = transform.rotation;
