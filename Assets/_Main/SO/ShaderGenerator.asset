@@ -58,94 +58,61 @@ MonoBehaviour:
   blocks:
   - key: Properties
     value: "[Header(Additional Parameters)]\r\n\r\n[Header(Float Parameters)]\r\n_Smooth(\"Smooth\",
-      float) = 17.5\r\n    \r\n[Header(Color Parameters)]\r\n_HeadColor(\"Head Color\",
-      Color) = (1.0, 1.0, 1.0, 1.0)\r\n_TorsoColor(\"TorsoColor Color\", Color) =
-      (1.0, 1.0, 1.0, 1.0)\r\n_LeftArmColor(\"LeftArmColor Color\", Color) = (1.0,
-      1.0, 1.0, 1.0)\r\n_RightArmColor(\"RightArmColor Color\", Color) = (1.0, 1.0,
-      1.0, 1.0)\r\n_LeftLegColor(\"LeftLegColor Color\", Color) = (1.0, 1.0, 1.0,
-      1.0)\r\n_RightLegColor(\"RightLegColor Color\", Color) = (1.0, 1.0, 1.0, 1.0)\r"
+      float) = 17.5\r\n    \r\n[Header(Color Parameters)]\r\n_BaseColor(\"Color\",
+      Color) = (1.0, 1.0, 1.0, 1.0)\r"
     folded: 0
   - key: DistanceFunction
     value: "// These inverse transform matrices are provided\r\n// from TransformProvider
-      script\r\nfloat4x4 _Head;\r\nfloat4x4 _TorsoUpper;\r\nfloat4x4 _TorsoMid;\r\nfloat4x4
-      _TorsoLower;\r\nfloat4x4 _TorsoMidExtra;\r\nfloat4x4 _LeftArmUpper;\r\nfloat4x4
-      _LeftArmMid;\r\nfloat4x4 _LeftArmLower;\r\nfloat4x4 _RightArmUpper;\r\nfloat4x4
-      _RightArmMid;\r\nfloat4x4 _RightArmLower;\r\nfloat4x4 _LeftLegUpper;\r\nfloat4x4
-      _LeftLegLower;\r\nfloat4x4 _LeftLegMid;\r\nfloat4x4 _RightLegUpper;\r\nfloat4x4
-      _RightLegLower;\r\nfloat4x4 _RightLegMid;\r\n\r\nfloat _Smooth;\r\n\r\n// Global
-      Variables\r\n\r\n    float4 headPos;\r\n    float4 torsoUpperPos;\r\n    float4
-      torsoMidPos;\r\n    float4 torsoLowerPos;\r\n    float4 torsoMidExtraPos;\r\n   
-      float4 leftArmUpperPos; \r\n    float4 leftArmMidPos;\r\n    float4 leftArmLowerPos;\r\n   
-      float4 rightArmUpperPos;\r\n    float4 rightArmMidPos;\r\n    float4 rightArmLowerPos;\r\n   
-      float4 leftLegUpperPos; \r\n    float4 leftLegLowerPos; \r\n    float4 leftLegMidPos;\r\n   
-      float4 rightLegUpperPos;\r\n    float4 rightLegLowerPos;\r\n    float4 rightLegMidPos;\r\n\r\n   
-      float head;\r\n    float torsoUpper;\r\n    float torsoMid;\r\n    float torsoLower;
-      \r\n    float torsoMidExtra;\r\n    \r\n    float leftArmUpper; \r\n    float
-      leftArmMid; \r\n    float leftArmLower;\r\n    \r\n    float rightArmUpper;\r\n   
-      float rightArmMid;\r\n    float rightArmLower;\r\n    \r\n    float leftLegUpper;\r\n   
-      float leftLegLower;\r\n    float leftLegMid;\r\n    \r\n    float rightLegUpper;\r\n   
-      float rightLegLower;\r\n    float rightLegMid;\r\n\r\n    float result;\r\n\r\ninline
-      float DistanceFunction(float3 wpos)\r\n{\r\n    headPos = mul(_Head, float4(wpos,
-      1.0));\r\n    torsoUpperPos = mul(_TorsoUpper, float4(wpos, 1.0));\r\n    torsoMidPos
-      = mul(_TorsoMid, float4(wpos, 1.0));\r\n    torsoLowerPos = mul(_TorsoLower,
-      float4(wpos, 1.0));\r\n    torsoMidExtraPos = mul(_TorsoMidExtra, float4(wpos,
-      1.0));\r\n    leftArmUpperPos = mul(_LeftArmUpper, float4(wpos, 1.0));\r\n   
-      leftArmMidPos = mul(_LeftArmMid, float4(wpos, 1.0));\r\n    leftArmLowerPos
-      = mul(_LeftArmLower, float4(wpos, 1.0));\r\n    rightArmUpperPos = mul(_RightArmUpper,
-      float4(wpos, 1.0));\r\n    rightArmMidPos = mul(_RightArmMid, float4(wpos,
-      1.0));\r\n    rightArmLowerPos = mul(_RightArmLower, float4(wpos, 1.0));\r\n   
-      leftLegUpperPos = mul(_LeftLegUpper, float4(wpos, 1.0));\r\n    leftLegLowerPos
-      = mul(_LeftLegLower, float4(wpos, 1.0));\r\n    leftLegMidPos = mul(_LeftLegMid,
-      float4(wpos, 1.0));\r\n    rightLegUpperPos = mul(_RightLegUpper, float4(wpos,
-      1.0));\r\n    rightLegLowerPos = mul(_RightLegLower, float4(wpos, 1.0));\r\n   
-      rightLegMidPos = mul(_RightLegMid, float4(wpos, 1.0));\r\n\r\n    head = Sphere(headPos,
-      0.1F);\r\n    torsoUpper = Capsule(torsoUpperPos, float3(0, 0, 0), float3(0,
-      .15, 0), 0.125F);\r\n    torsoMid = Sphere(torsoMidPos, 0.125F);\r\n    torsoLower
-      = Sphere(torsoLowerPos, 0.16F);\r\n    torsoMidExtra =  Sphere(torsoMidExtraPos,
+      script\r\nfloat4x4 _Head;\r\nfloat4x4 _TorsoUpper;\r\nfloat4x4 _TorsoLower;\r\n\r\nfloat4x4
+      _LeftArmUpper;\r\nfloat4x4 _LeftArmLower;\r\n\r\nfloat4x4 _RightArmUpper;\r\nfloat4x4
+      _RightArmLower;\r\n\r\nfloat4x4 _LeftLegUpper;\r\nfloat4x4 _LeftLegLower;\r\n\r\nfloat4x4
+      _RightLegUpper;\r\nfloat4x4 _RightLegLower;\r\n\r\nfloat _Smooth;\r\n\r\n//
+      Global Variables\r\n\r\n    float4 headPos;\r\n\r\n    float4 torsoUpperPos;\r\n   
+      float4 torsoLowerPos;\r\n\r\n    float4 leftArmUpperPos; \r\n    float4 leftArmLowerPos;\r\n\r\n   
+      float4 rightArmUpperPos;\r\n    float4 rightArmLowerPos;\r\n\r\n    float4
+      leftLegUpperPos; \r\n    float4 leftLegLowerPos;\r\n\r\n    float4 rightLegUpperPos;\r\n   
+      float4 rightLegLowerPos;\r\n\r\n    float head;\r\n\r\n    float torsoUpper;\r\n   
+      float torsoLower; \r\n    \r\n    float leftArmUpper;\r\n    float leftArmLower;\r\n   
+      \r\n    float rightArmUpper;\r\n    float rightArmLower;\r\n    \r\n    float
+      leftLegUpper;\r\n    float leftLegLower;\r\n    \r\n    float rightLegUpper;\r\n   
+      float rightLegLower;\r\n\r\n    float result;\r\n\r\ninline float DistanceFunction(float3
+      wpos)\r\n{\r\n    headPos = mul(_Head, float4(wpos, 1.0));\r\n    \r\n    torsoUpperPos
+      = mul(_TorsoUpper, float4(wpos, 1.0));\r\n    torsoLowerPos = mul(_TorsoLower,
+      float4(wpos, 1.0));\r\n    \r\n    leftArmUpperPos = mul(_LeftArmUpper, float4(wpos,
+      1.0));\r\n    leftArmLowerPos = mul(_LeftArmLower, float4(wpos, 1.0));\r\n   
+      \r\n    rightArmUpperPos = mul(_RightArmUpper, float4(wpos, 1.0));\r\n    rightArmLowerPos
+      = mul(_RightArmLower, float4(wpos, 1.0));\r\n    \r\n    leftLegUpperPos =
+      mul(_LeftLegUpper, float4(wpos, 1.0));\r\n    leftLegLowerPos = mul(_LeftLegLower,
+      float4(wpos, 1.0));\r\n    \r\n    rightLegUpperPos = mul(_RightLegUpper, float4(wpos,
+      1.0));\r\n    rightLegLowerPos = mul(_RightLegLower, float4(wpos, 1.0));\r\n\r\n   
+      head = Sphere(headPos, 0.1F);\r\n    torsoUpper = Capsule(torsoUpperPos, float3(0,
+      0, 0), float3(0, .15, 0), 0.125F);\r\n    torsoLower = Sphere(torsoLowerPos,
       0.16F);\r\n    \r\n    leftArmUpper = Capsule(leftArmUpperPos, float3(0, 0,
-      0), float3(0, .15, 0), 0.075F);\r\n    leftArmMid =  Sphere(leftArmMidPos,
-      0.04F);\r\n    leftArmLower = Capsule(leftArmLowerPos, float3(0, 0, 0), float3(0,
-      .15, 0), 0.05F);\r\n    \r\n    rightArmUpper = Capsule(rightArmUpperPos, float3(0,
-      0, 0), float3(0, .15, 0), 0.075F);\r\n    rightArmMid =  Sphere(rightArmMidPos,
-      0.045F);\r\n    rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0),
-      float3(0, .15, 0), 0.05F);\r\n    \r\n    leftLegUpper = Capsule(leftLegUpperPos,
-      float3(0, 0, 0), float3(0, .125, 0), 0.07F);\r\n    leftLegLower = Capsule(leftLegLowerPos,
-      float3(0, 0, 0), float3(0, .125, 0), 0.07F);\r\n    leftLegMid =  Sphere(leftLegMidPos,
-      0.075F);\r\n    \r\n    rightLegUpper = Capsule(rightLegUpperPos, float3(0,
-      0, 0), float3(0, .125, 0), 0.07F);\r\n    rightLegLower = Capsule(rightLegLowerPos,
-      float3(0, 0, 0), float3(0, .125, 0), 0.07F);\r\n    rightLegMid =  Sphere(rightLegMidPos,
-      0.06F);\r\n\r\n    result = SmoothMin(torsoUpper, torsoLower, _Smooth);\r\n   
+      0), float3(0, .15, 0), 0.075F);\r\n    leftArmLower = Capsule(leftArmLowerPos,
+      float3(0, 0, 0), float3(0, .15, 0), 0.05F);\r\n    \r\n    rightArmUpper =
+      Capsule(rightArmUpperPos, float3(0, 0, 0), float3(0, .15, 0), 0.075F);\r\n   
+      rightArmLower = Capsule(rightArmLowerPos, float3(0, 0, 0), float3(0, .15, 0),
+      0.05F);\r\n    \r\n    leftLegUpper = Capsule(leftLegUpperPos, float3(0, 0,
+      0), float3(0, .125, 0), 0.07F);\r\n    leftLegLower = Capsule(leftLegLowerPos,
+      float3(0, 0, 0), float3(0, .125, 0), 0.07F);\r\n    \r\n    rightLegUpper =
+      Capsule(rightLegUpperPos, float3(0, 0, 0), float3(0, .125, 0), 0.07F);\r\n   
+      rightLegLower = Capsule(rightLegLowerPos, float3(0, 0, 0), float3(0, .125,
+      0), 0.07F);\r\n\r\n    result = SmoothMin(torsoUpper, torsoLower, _Smooth);\r\n   
       result = SmoothMin(result, head, _Smooth);\r\n    result = SmoothMin(result,
-      torsoMid, _Smooth);\r\n    result = SmoothMin(result, torsoMidExtra, _Smooth);\r\n   
-      result = SmoothMin(result, leftArmUpper, _Smooth);\r\n    result = SmoothMin(result,
-      leftArmLower, _Smooth);\r\n    result = SmoothMin(result, rightArmUpper, _Smooth);\r\n   
-      result = SmoothMin(result, rightArmLower, _Smooth);\r\n    result = SmoothMin(result,
-      leftLegUpper, _Smooth);\r\n    result = SmoothMin(result, leftLegLower, _Smooth);\r\n   
-      result = SmoothMin(result, rightLegUpper, _Smooth);\r\n    result = SmoothMin(result,
-      rightLegLower, _Smooth);\r\n    result = SmoothMin(result, leftArmMid, _Smooth);\r\n   
-      result = SmoothMin(result, rightArmMid, _Smooth);\r\n    result = SmoothMin(result,
-      leftLegMid, _Smooth);\r\n    result = SmoothMin(result, rightLegMid, _Smooth);\r\n   
-      \r\n    return result;\r\n}\r"
+      torsoUpper, _Smooth);\r\n    result = SmoothMin(result, leftArmUpper, _Smooth);\r\n   
+      result = SmoothMin(result, leftArmLower, _Smooth);\r\n    result = SmoothMin(result,
+      rightArmUpper, _Smooth);\r\n    result = SmoothMin(result, rightArmLower, _Smooth);\r\n   
+      result = SmoothMin(result, leftLegUpper, _Smooth);\r\n    result = SmoothMin(result,
+      leftLegLower, _Smooth);\r\n    result = SmoothMin(result, rightLegUpper, _Smooth);\r\n   
+      result = SmoothMin(result, rightLegLower, _Smooth);\r\n    \r\n    return result;\r\n}\r"
     folded: 0
   - key: PostEffect
-    value: "float4 _HeadColor;\r\nfloat4 _TorsoColor;\r\nfloat4 _LeftArmColor;\r\nfloat4
-      _RightArmColor;\r\nfloat4 _LeftLegColor;\r\nfloat4 _RightLegColor;\r\n\r\nfixed3
-      _colorResult;\r\n\r\ninline void PostEffect(RaymarchInfo ray, inout PostEffectOutput
-      o)\r\n{\r\n    _colorResult =\r\n        (4 / head) * _HeadColor +\r\n       
-      (4 / torsoUpper) * _TorsoColor +\r\n        (4 / torsoMid) * _TorsoColor +\r\n       
-      (4 / torsoLower) * _TorsoColor +\r\n        (4 / torsoMidExtra) * _TorsoColor
-      +\r\n        (4 / leftArmUpper) * _LeftArmColor +\r\n        (4 / leftArmMid)
-      * _LeftArmColor +\r\n        (4 / leftArmLower) * _LeftArmColor +\r\n       
-      (4 / rightArmUpper) * _RightArmColor +\r\n        (4 / rightArmMid) * _RightArmColor
-      +\r\n        (4 / rightArmLower) * _RightArmColor +\r\n        (4 / leftLegUpper)
-      * _LeftLegColor +\r\n        (4 / leftLegLower) * _LeftLegColor +\r\n       
-      (4 / leftLegMid) * _LeftLegColor +\r\n        (4 / rightLegUpper) * _RightLegColor
-      +\r\n        (4 / rightLegLower) * _RightLegColor +\r\n        (4 / rightLegMid)
-      * _RightLegColor;\r\n\r\n    o.Albedo = normalize(_TorsoColor);\r\n}\r"
+    value: "float4 _BaseColor;\r\n\r\ninline void PostEffect(RaymarchInfo ray, inout
+      PostEffectOutput o)\r\n{\r\n    o.Albedo = normalize(_BaseColor);\r\n}\r"
     folded: 0
-  constants: {fileID: 11400000, guid: b54b57bcc672e49638fe9b2da609c4df, type: 2}
-  basicFolded: 1
+  constants: {fileID: 11400000, guid: 9c8b2f5a7a56c4e21bee7ca4ccfc6640, type: 2}
+  basicFolded: 0
   conditionsFolded: 0
   variablesFolded: 0
-  materialsFolded: 1
+  materialsFolded: 0
   constantsFolded: 0
