@@ -45,7 +45,7 @@ public class PController : MonoBehaviour
             // Handle Movement
             var direction = new Vector3(_direction.x * speed, 0, speed);
 
-            // transform.position += direction * Time.fixedDeltaTime;
+            transform.position += direction * Time.fixedDeltaTime;
             
             // Handle Rotation
             var currRotation = transform.rotation;
@@ -154,46 +154,7 @@ public class PController : MonoBehaviour
     {
         if (other.CompareTag("AFinish"))
         {
-            _animationController.DisableAnimator();
-
-            model.transform.DOScale(Vector3.one * -.25F, 1F).OnComplete(StartFinishAnimation);
-
-            model.transform.DOMoveY(1.5F, 1);
-
-            DOTween.To(() => _renderer.sharedMaterial.GetFloat("_Smooth"),
-                x => _renderer.sharedMaterial.SetFloat("_Smooth", x), 9, 2);
-
-            GameManager.Instance.RestartGame(15);
-        }
-        
-        else if (other.CompareTag("ASpeed"))
-        {
-            _animationController.IncreaseRunAnimationRate(2);
-
-            DOTween.To(() => speed, x => speed = x, speed * 2, 4).SetEase(Ease.InCirc);
-        }
-    }
-
-    private void StartFinishAnimation()
-    {
-        foreach (var piece in _player.BodyParts)
-        {
-            StartCoroutine(Animate(piece.transform));
-        }
-    }
-    
-    private IEnumerator Animate(Transform piece)
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(0, .75F));
-
-            var randomLocation = 
-                new Vector3(Random.Range(-1, 1), Random.Range(-1, 1), Random.Range(-1, 1)) * 1.15F;
-
-            piece.DOLocalMove(randomLocation, .75F);
-        
-            yield return new WaitForSeconds(.75F);
+            GameManager.Instance.RestartGame(0);
         }
     }
 

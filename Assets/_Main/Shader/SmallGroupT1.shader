@@ -4,30 +4,23 @@ Shader "Raymarching/TransformProvider"
 Properties
 {
     [Header(PBS)]
-    _Color("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+    _BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
     _Glossiness("Smoothness", Range(0.0, 1.0)) = 0.5
 
-    [Header(Pass)]
-    [Enum(UnityEngine.Rendering.CullMode)] _Cull("Culling", Int) = 2
+    [HideInInspector] [Enum(UnityEngine.Rendering.CullMode)] _Cull("Culling", Int) = 2
+    [HideInInspector] [Toggle][KeyEnum(Off, On)] _ZWrite("ZWrite", Float) = 1
 
-    [Toggle][KeyEnum(Off, On)] _ZWrite("ZWrite", Float) = 1
-
-    [Header(Raymarching)]
-    _Loop("Loop", Range(1, 100)) = 30
-    _MinDistance("Minimum Distance", Range(0.001, 0.1)) = 0.01
-    _DistanceMultiplier("Distance Multiplier", Range(0.001, 2.0)) = 1.0
-    _ShadowLoop("Shadow Loop", Range(1, 100)) = 30
-    _ShadowMinDistance("Shadow Minimum Distance", Range(0.001, 0.1)) = 0.01
-    _ShadowExtraBias("Shadow Extra Bias", Range(0.0, 0.1)) = 0.0
-    [PowerSlider(10.0)] _NormalDelta("NormalDelta", Range(0.00001, 0.1)) = 0.0001
-
-// @block Properties
-[Header(Additional Parameters)]
-_Smooth("Smooth", float) = 1.0
-_Scale ("Scale", float) = 0.5   
-     
-_ShapeColor("ShapeColor", Color) = (1.0, 1.0, 1.0, 1.0)
-// @endblock
+    [HideInInspector]_Loop("Loop", Range(1, 100)) = 25
+    [HideInInspector]_MinDistance("Minimum Distance", Range(0.001, 0.1)) = 0.1
+    [HideInInspector]_DistanceMultiplier("Distance Multiplier", Range(0.001, 2.0)) = 1.0
+    [HideInInspector] [PowerSlider(10.0)] _NormalDelta("NormalDelta", Range(0.00001, 0.1)) = 0.0001
+ 
+    // @block Properties
+    [Header(Additional Parameters)]
+    _Smooth("Smooth", float) = 1.0
+    _Scale ("Scale", float) = 0.5   
+    _ShapeColor("ShapeColor", Color) = (1.0, 1.0, 1.0, 1.0)
+    // @endblock
 }
 
 SubShader
@@ -67,27 +60,42 @@ float4x4 _Part3;
 float4x4 _Part4;
 float4x4 _Part5;
 
+float4 part1Pos;
+float4 part2Pos;
+float4 part3Pos;
+float4 part4Pos;
+float4 part5Pos;
+
+float part1;
+float part2;
+float part3;
+float part4;
+float part5;
+
+float result1;
+float result2;
+float result3;
 float _Smooth;
+
 float _Scale;
 
 inline float DistanceFunction(float3 wpos)
 {
-    float4 part1Pos = mul(_Part1, float4(wpos, 1.0));
-    float4 part2Pos = mul(_Part2, float4(wpos, 1.0));
-    float4 part3Pos = mul(_Part3, float4(wpos, 1.0));
-    float4 part4Pos = mul(_Part4, float4(wpos, 1.0));
-    float4 part5Pos = mul(_Part5, float4(wpos, 1.0));
+    part1Pos = mul(_Part1, float4(wpos, 1.0));
+    part2Pos = mul(_Part2, float4(wpos, 1.0));
+    part3Pos = mul(_Part3, float4(wpos, 1.0));
+    part4Pos = mul(_Part4, float4(wpos, 1.0));
+    part5Pos = mul(_Part5, float4(wpos, 1.0));
+     
+    part1 = Sphere(part1Pos, _Scale * 1.25F);
+    part2 = Sphere(part2Pos, _Scale);
+    part3 = Sphere(part3Pos, _Scale / .75F);
+    part4 = Sphere(part4Pos, _Scale);
+    part5 =  Sphere(part5Pos, _Scale);
     
-    float part1 = Sphere(part1Pos, _Scale * 1.25F);
-    float part2 = Sphere(part2Pos, _Scale);
-    float part3 = Sphere(part3Pos, _Scale / .75F);
-    float part4 = Sphere(part4Pos, _Scale);
-    float part5 =  Sphere(part5Pos, _Scale);
-    
-    float result1 = SmoothMin(part1, part2, _Smooth);
-    float result2 = SmoothMin(part3, part4, _Smooth);
-    
-    float result3 = SmoothMin(part5, result1, _Smooth);
+    result1 = SmoothMin(part1, part2, _Smooth);
+    result2 = SmoothMin(part3, part4, _Smooth);
+    result3 = SmoothMin(part5, result1, _Smooth);
     
     return SmoothMin(result2, result3, _Smooth);
 }
@@ -98,37 +106,7 @@ float4 _ShapeColor;
 
 inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
 {
-    float3 wpos = ray.endPos;
-    
-    float4 part1Pos = mul(_Part1, float4(wpos, 1.0));
-    float4 part2Pos = mul(_Part2, float4(wpos, 1.0));
-    float4 part3Pos = mul(_Part3, float4(wpos, 1.0));
-    float4 part4Pos = mul(_Part4, float4(wpos, 1.0));
-    float4 part5Pos = mul(_Part5, float4(wpos, 1.0));
-    
-    float part1 = Sphere(part1Pos, _Scale);
-    float part2 = Sphere(part2Pos, _Scale);
-    float part3 = Sphere(part3Pos, _Scale);
-    float part4 = Sphere(part4Pos, _Scale);
-    float part5 =  Sphere(part5Pos, _Scale);
-    
-    float4 result1 = float4(2.0 / part1, 2.0 / part2, 2.0 / part3, 2.0 / part4);
-    float4 result2 = float4(2.0 / part5, 0, 0, 0);
-
-    fixed3 computeAlbedoPart1 =
-        result1.x * _ShapeColor +
-        result1.y * _ShapeColor +
-        result1.z * _ShapeColor +
-        result1.w * _ShapeColor;
-
-    fixed3 computeAlbedoPart2 =
-        result2.x * _ShapeColor;
-
-    fixed3 final = normalize(fixed3(
-        computeAlbedoPart1 +
-        computeAlbedoPart2));
-
-    o.Albedo = final;
+    o.Albedo = normalize(_ShapeColor);
 }
 // @endblock
 
@@ -141,7 +119,7 @@ Pass
     ZWrite [_ZWrite]
 
     CGPROGRAM
-    #include "Assets\uRaymarching\Shaders\Include\Legacy/ForwardBaseStandard.cginc"
+    #include "Assets/uRaymarching/Shaders/Include/Legacy/ForwardBaseStandard.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
@@ -158,7 +136,7 @@ Pass
     Blend One One
 
     CGPROGRAM
-    #include "Assets\uRaymarching\Shaders\Include\Legacy/ForwardAddStandard.cginc"
+    #include "Assets/uRaymarching/Shaders/Include/Legacy/ForwardAddStandard.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
@@ -174,7 +152,7 @@ Pass
     Tags { "LightMode" = "ShadowCaster" }
 
     CGPROGRAM
-    #include "Assets\uRaymarching\Shaders\Include\Legacy/ShadowCaster.cginc"
+    #include "Assets/uRaymarching/Shaders/Include/Legacy/ShadowCaster.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag

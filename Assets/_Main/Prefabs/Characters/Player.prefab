@@ -995,15 +995,14 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _RightLegUpperScale
-  shaderColorParam: _RightLegUpperColor
+  shaderColorParam: _RightLegColor
   relatedBodyParts:
   - {fileID: 3074952190966509519}
   - {fileID: 4523681695996422695}
-  - {fileID: 0}
   requiredBodyParts:
   - {fileID: 1802791997158850051}
   hasBroken: 0
-  bodyState: 6
+  bodyState: 4
 --- !u!65 &8481322818279939269
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1079,14 +1078,13 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _LeftArmLowerScale
-  shaderColorParam: _LeftArmLowerColor
+  shaderColorParam: _LeftArmColor
   relatedBodyParts:
   - {fileID: 5367650892266645983}
-  - {fileID: 0}
   requiredBodyParts:
   - {fileID: 177373541418584093}
   hasBroken: 0
-  bodyState: 9
+  bodyState: 6
 --- !u!65 &8452917937474356981
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1162,15 +1160,14 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _RightArmUpperScale
-  shaderColorParam: _RightArmUpperColor
+  shaderColorParam: _RightArmColor
   relatedBodyParts:
   - {fileID: 3800739931152454161}
   - {fileID: 5269207677888654112}
-  - {fileID: 0}
   requiredBodyParts:
   - {fileID: 0}
   hasBroken: 0
-  bodyState: 10
+  bodyState: 7
 --- !u!65 &1796020244233713012
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1246,19 +1243,17 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _TorsoLowerScale
-  shaderColorParam: _TorsoLowerColor
+  shaderColorParam: _TorsoColor
   relatedBodyParts:
   - {fileID: 1802791997158850051}
   - {fileID: 3074952190966509519}
   - {fileID: 4523681695996422695}
-  - {fileID: 0}
   - {fileID: 8468672387554774613}
   - {fileID: 5894025763104983709}
-  - {fileID: 0}
   requiredBodyParts:
   - {fileID: 0}
   hasBroken: 0
-  bodyState: 17
+  bodyState: 11
 --- !u!65 &3560087107019290716
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1334,15 +1329,14 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _LeftArmUpperScale
-  shaderColorParam: _LeftArmUpperColor
+  shaderColorParam: _LeftArmColor
   relatedBodyParts:
   - {fileID: 177373541418584093}
   - {fileID: 5367650892266645983}
-  - {fileID: 0}
   requiredBodyParts:
   - {fileID: 0}
   hasBroken: 0
-  bodyState: 7
+  bodyState: 5
 --- !u!65 &8190549984117424928
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1418,22 +1412,19 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _TorsoUpperScale
-  shaderColorParam: _TorsoUpperColor
+  shaderColorParam: _TorsoColor
   relatedBodyParts:
   - {fileID: 1068552151245805776}
-  - {fileID: 0}
   - {fileID: 3800739931152454161}
   - {fileID: 5269207677888654112}
-  - {fileID: 0}
   - {fileID: 177373541418584093}
   - {fileID: 5367650892266645983}
-  - {fileID: 0}
   - {fileID: 4333527545423126873}
   requiredBodyParts:
   - {fileID: 0}
   - {fileID: 0}
   hasBroken: 0
-  bodyState: 14
+  bodyState: 10
 --- !u!65 &783253735730663400
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1509,10 +1500,9 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _LeftLegLowerScale
-  shaderColorParam: _LeftLegLowerColor
+  shaderColorParam: _LeftLegColor
   relatedBodyParts:
   - {fileID: 5894025763104983709}
-  - {fileID: 0}
   requiredBodyParts:
   - {fileID: 8468672387554774613}
   hasBroken: 0
@@ -1592,14 +1582,13 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _RightLegLowerScale
-  shaderColorParam: _RightLegLowerColor
+  shaderColorParam: _RightLegColor
   relatedBodyParts:
   - {fileID: 4523681695996422695}
-  - {fileID: 0}
   requiredBodyParts:
   - {fileID: 3074952190966509519}
   hasBroken: 0
-  bodyState: 5
+  bodyState: 3
 --- !u!65 &4599880109623956283
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1675,15 +1664,14 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _LeftLegUpperScale
-  shaderColorParam: _LeftLegUpperColor
+  shaderColorParam: _LeftLegColor
   relatedBodyParts:
   - {fileID: 8468672387554774613}
   - {fileID: 5894025763104983709}
-  - {fileID: 0}
   requiredBodyParts:
   - {fileID: 1802791997158850051}
   hasBroken: 0
-  bodyState: 3
+  bodyState: 2
 --- !u!65 &3837765609835157880
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1759,14 +1747,13 @@ MonoBehaviour:
   containerPrefab: {fileID: 4193191480896732150, guid: 0ce547d5f6a28e5438d3f275026b4f5b,
     type: 3}
   shaderParam: _RightArmLowerScale
-  shaderColorParam: _RightArmLowerColor
+  shaderColorParam: _RightArmColor
   relatedBodyParts:
   - {fileID: 5269207677888654112}
-  - {fileID: 0}
   requiredBodyParts:
   - {fileID: 3800739931152454161}
   hasBroken: 0
-  bodyState: 12
+  bodyState: 8
 --- !u!65 &4567213817013666651
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1848,7 +1835,7 @@ MonoBehaviour:
   requiredBodyParts:
   - {fileID: 0}
   hasBroken: 0
-  bodyState: 13
+  bodyState: 9
 --- !u!135 &3854997957053532952
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -1,4 +1,4 @@
-Shader "Raymarching/TransformProvider"
+Shader "BlobCharacter/Standard"
 {
 
 Properties
@@ -7,25 +7,24 @@ Properties
     _Metallic("Metallic", Range(0.0, 1.0)) = 0.5
     _Glossiness("Smoothness", Range(0.0, 1.0)) = 0.5
 
-    [Header(Pass)]
-    [Enum(UnityEngine.Rendering.CullMode)] _Cull("Culling", Int) = 2
+    [HideInInspector] [Enum(UnityEngine.Rendering.CullMode)] _Cull("Culling", Int) = 2
+    [HideInInspector] [Toggle][KeyEnum(Off, On)] _ZWrite("ZWrite", Float) = 1
 
-    [Toggle][KeyEnum(Off, On)] _ZWrite("ZWrite", Float) = 1
+    [HideInInspector]_Loop("Loop", Range(1, 100)) = 25
+    [HideInInspector]_MinDistance("Minimum Distance", Range(0.001, 0.1)) = 0.0025
+    [HideInInspector]_DistanceMultiplier("Distance Multiplier", Range(0.001, 2.0)) = 1.0
+    [HideInInspector] [PowerSlider(10.0)] _NormalDelta("NormalDelta", Range(0.00001, 0.1)) = 0.0001
 
-    [Header(Raymarching)]
-    _Loop("Loop", Range(1, 100)) = 30
-    _MinDistance("Minimum Distance", Range(0.001, 0.1)) = 0.01
-    _DistanceMultiplier("Distance Multiplier", Range(0.001, 2.0)) = 1.0
-    [PowerSlider(10.0)] _NormalDelta("NormalDelta", Range(0.00001, 0.1)) = 0.0001
-
-// @block Properties
-[Header(Additional Parameters)]
-
-[Header(Float Parameters)]
-_Smooth("Smooth", float) = 17.5
-    
-[Header(Color Parameters)]
-_BaseColor("Color", Color) = (1.0, 1.0, 1.0, 1.0)
+    [Header(Float Parameters)]
+    _Smooth("Smooth", Range(3, 60)) = 17.5
+        
+    [Header(Color Parameters)]
+    _HeadColor("Head Color", Color) = (1.0, 1.0, 1.0, 1.0)
+    _TorsoColor("Torso Color", Color) = (1.0, 1.0, 1.0, 1.0)
+    _LeftArmColor("Left Arm Color", Color) = (1.0, 1.0, 1.0, 1.0)
+    _RightArmColor("Right Arm Color", Color) = (1.0, 1.0, 1.0, 1.0)
+    _LeftLegColor("Left Leg Color", Color) = (1.0, 1.0, 1.0, 1.0)
+    _RightLegColor("Right Leg Color", Color) = (1.0, 1.0, 1.0, 1.0)
 
 // @endblock
 }
@@ -56,7 +55,7 @@ CGINCLUDE
 #define PostEffectOutput SurfaceOutputStandard
 #define POST_EFFECT PostEffect
 
-#include "Assets\uRaymarching\Shaders\Include\Legacy/Common.cginc"
+#include "Assets/uRaymarching/Shaders/Include/Legacy/Common.cginc"
 
 // @block DistanceFunction
 // These inverse transform matrices are provided
@@ -81,41 +80,41 @@ float _Smooth;
 
 // Global Variables
 
-    float4 headPos;
+float4 headPos;
 
-    float4 torsoUpperPos;
-    float4 torsoLowerPos;
+float4 torsoUpperPos;
+float4 torsoLowerPos;
 
-    float4 leftArmUpperPos; 
-    float4 leftArmLowerPos;
+float4 leftArmUpperPos; 
+float4 leftArmLowerPos;
 
-    float4 rightArmUpperPos;
-    float4 rightArmLowerPos;
+float4 rightArmUpperPos;
+float4 rightArmLowerPos;
 
-    float4 leftLegUpperPos; 
-    float4 leftLegLowerPos;
+float4 leftLegUpperPos; 
+float4 leftLegLowerPos;
 
-    float4 rightLegUpperPos;
-    float4 rightLegLowerPos;
+float4 rightLegUpperPos;
+float4 rightLegLowerPos;
 
-    float head;
+float head;
 
-    float torsoUpper;
-    float torsoLower; 
-    
-    float leftArmUpper;
-    float leftArmLower;
-    
-    float rightArmUpper;
-    float rightArmLower;
-    
-    float leftLegUpper;
-    float leftLegLower;
-    
-    float rightLegUpper;
-    float rightLegLower;
+float torsoUpper;
+float torsoLower; 
 
-    float result;
+float leftArmUpper;
+float leftArmLower;
+
+float rightArmUpper;
+float rightArmLower;
+
+float leftLegUpper;
+float leftLegLower;
+
+float rightLegUpper;
+float rightLegLower;
+
+float result;
 
 inline float DistanceFunction(float3 wpos)
 {
@@ -170,11 +169,53 @@ inline float DistanceFunction(float3 wpos)
 
 // @block PostEffect
 
-float4 _BaseColor;
+// @block PostEffect
+float4 _HeadColor;
+float4 _TorsoColor;
+float4 _LeftArmColor;
+float4 _RightArmColor;
+float4 _LeftLegColor;
+float4 _RightLegColor;
+
+float4 _colorBlendResult1;
+float4 _colorBlendResult2;
+float4 _colorBlendResult3;
+
+fixed3 _computeAlbedoResult1;
+fixed3 _computeAlbedoResult2;
+fixed3 _computeAlbedoResult3;
+fixed3 _computeAlbedoFinalResult;
 
 inline void PostEffect(RaymarchInfo ray, inout PostEffectOutput o)
 {
-    o.Albedo = normalize(_BaseColor);
+    _colorBlendResult1 = float4(3.0 / head, 3.0 / torsoUpper, 3.0 / torsoLower, 3.0 / leftArmUpper);
+    _colorBlendResult2 = float4(3.0 / leftArmLower, 3.0 / rightArmUpper, 3.0 / rightArmLower, 3.0 / leftLegUpper);
+    _colorBlendResult3 = float4(3.0 / leftLegLower, 3.0/ rightLegUpper, 3.0 / rightLegLower, torsoUpper / 3.0);
+
+    _computeAlbedoResult1 =
+        _colorBlendResult1.x * _HeadColor +
+        _colorBlendResult1.y * _TorsoColor +
+        _colorBlendResult1.z * _TorsoColor +
+        _colorBlendResult1.w * _LeftArmColor;
+
+    _computeAlbedoResult2 =
+        _colorBlendResult2.x * _LeftArmColor +
+        _colorBlendResult2.y * _RightArmColor +
+        _colorBlendResult2.z * _RightArmColor +
+        _colorBlendResult2.w * _LeftLegColor;
+
+    _computeAlbedoResult3 =
+        _colorBlendResult3.x * _LeftLegColor +
+        _colorBlendResult3.y * _RightLegColor +
+        _colorBlendResult3.z * _RightLegColor +
+        _colorBlendResult3.z * _TorsoColor;
+
+    _computeAlbedoFinalResult = normalize(fixed3(
+        _computeAlbedoResult1 +
+        _computeAlbedoResult2 +
+        _computeAlbedoResult3));
+
+    o.Albedo = _computeAlbedoFinalResult;
 }
 // @endblock
 
@@ -187,7 +228,7 @@ Pass
     ZWrite [_ZWrite]
 
     CGPROGRAM
-    #include "Assets\uRaymarching\Shaders\Include\Legacy/ForwardBaseStandard.cginc"
+    #include "Assets/uRaymarching/Shaders/Include/Legacy/ForwardBaseStandard.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
@@ -204,7 +245,7 @@ Pass
     Blend One One
 
     CGPROGRAM
-    #include "Assets\uRaymarching\Shaders\Include\Legacy/ForwardAddStandard.cginc"
+    #include "Assets/uRaymarching/Shaders/Include/Legacy/ForwardAddStandard.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
@@ -220,7 +261,7 @@ Pass
     Tags { "LightMode" = "ShadowCaster" }
 
     CGPROGRAM
-    #include "Assets\uRaymarching\Shaders\Include\Legacy/ShadowCaster.cginc"
+    #include "Assets/uRaymarching/Shaders/Include/Legacy/ShadowCaster.cginc"
     #pragma target 3.0
     #pragma vertex Vert
     #pragma fragment Frag
